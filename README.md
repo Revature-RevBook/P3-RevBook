@@ -1,6 +1,6 @@
 # Revature: Project3 "RevBook"
 
-<b><u>PROJECT STATUS</u></b>: IN-PROGRESS
+<b>PROJECT STATUS</b>: IN-PROGRESS
 
 <b>Group Name</b>:
 
