@@ -1,5 +1,7 @@
 # Revature: Project3 "RevBook"
 
+<b><u>PROJECT STATUS</u></b>: IN-PROGRESS
+
 <b>Group Name</b>:
 
 &emsp;Rory's Team
