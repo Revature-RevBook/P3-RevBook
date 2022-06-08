@@ -2,6 +2,9 @@ package org.revature.revbook;
 
 
 import org.junit.jupiter.api.*;
+import org.revature.revbook.entity.User;
+import org.revature.revbook.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
@@ -10,6 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class RevBookApplicationTest
 {
     //Autowire services here
+    @Autowired
+    UserService userService;
 
 
     //============================================================================================================
@@ -40,5 +45,13 @@ public class RevBookApplicationTest
         Assertions.assertEquals(5, 5);
     }
 
-    //Create tests here
+    @Test
+    @Order(4)
+    public void userRegister() {
+        User user = new User();
+
+
+    }
+
+
 }
