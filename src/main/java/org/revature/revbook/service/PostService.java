@@ -5,6 +5,7 @@ import org.revature.revbook.entity.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -21,7 +22,7 @@ public class PostService {
     public Post update_post(Post post){
         Post postDB = postRepository.findById(post.getPost_id()).get();
         post.setPost_title(post.getPost_title());
-        post.setUpdated_at(post.getUpdated_at());
+        post.setUpdated_at(new Timestamp(System.currentTimeMillis()));
         post.setPost_content(post.getPost_content());
         post.setPost_img(post.getPost_img());
         postRepository.save(postDB);
@@ -29,6 +30,4 @@ public class PostService {
     }
 
     public void delete_post(Long id){postRepository.deleteById(id);}
-
-
 }
