@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BootstrapFormatComponent } from './bootstrap-format/bootstrap-format.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {path: '', component: BootstrapFormatComponent}
+  {path:'', redirectTo:'home', pathMatch:'full'},
+  {path:'home', component: HomeComponent},
+  {path: 'bootstrap', component: BootstrapFormatComponent}
 ];
 
 @NgModule({
