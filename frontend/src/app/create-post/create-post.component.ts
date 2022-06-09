@@ -21,7 +21,7 @@ export class CreatePostComponent implements OnInit {
     }
   }
 
-  createBook() {
+  createPost() {
     this.postService.createPost(this.post).subscribe((post: Partial<Post>) => {
         this.post = post;
       })

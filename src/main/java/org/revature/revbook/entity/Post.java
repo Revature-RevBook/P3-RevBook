@@ -1,5 +1,6 @@
 package org.revature.revbook.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.*;
 import javax.persistence.Id;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -26,13 +28,20 @@ public class Post {
     @Column(columnDefinition = "TEXT")
     private String post_content;
     //Todo ask about storage of an image
-    //private List<String> post_img;
+    @JsonManagedReference(value = "post_image")
+    @OneToMany(targetEntity = post_images.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id", referencedColumnName = "post_id")
+    private List<String> post_img;
+//    @ManyToMany(targetEntity = User.class, cascade = CascadeType.ALL)
+//    @JoinColumn()
+//    private List<User> likes;
 
     public Post(String post_title, String post_content) {
         this.post_title = post_title;
         this.created_at = new Timestamp(System.currentTimeMillis());
         this.updated_at = new Timestamp(System.currentTimeMillis());
         this.post_content = post_content;
+        //this.likes = new ArrayList<>();
     }
 
 //    public Post(String post_title, String post_content, List<String> post_img) {
