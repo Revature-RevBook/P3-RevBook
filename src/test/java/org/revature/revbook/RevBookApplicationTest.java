@@ -2,6 +2,10 @@ package org.revature.revbook;
 
 
 import org.junit.jupiter.api.*;
+import org.revature.revbook.data.*;
+import org.revature.revbook.entity.Message;
+import org.revature.revbook.service.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
@@ -9,7 +13,43 @@ import org.springframework.boot.test.context.SpringBootTest;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class RevBookApplicationTest
 {
-    //Autowire services here
+    @Autowired
+    CommentService commentService;
+
+    @Autowired
+    MessageService messageService;
+
+    @Autowired
+    PostService postService;
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    VoteCommentService voteCommentService;
+
+    @Autowired
+    VotePostService votePostService;
+
+    @Autowired
+    CommentRepository commentRepository;
+
+    @Autowired
+    MessageRepository messageRepository;
+
+    @Autowired
+    PostRepository postRepository;
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    VoteCommentRepository voteCommentRepository;
+
+    @Autowired
+    VotePostRepository votePostRepository;
+
+
 
 
     //============================================================================================================
@@ -45,6 +85,7 @@ public class RevBookApplicationTest
      ==================================================================================================================*/
     @Test
     void testAddComment(){
+
 
     }
 
@@ -174,7 +215,7 @@ public class RevBookApplicationTest
     void testDeleteVotePost(){
 
     }
-    
+
 
     /*==================================================================================================================
                                                OTHER TESTS
