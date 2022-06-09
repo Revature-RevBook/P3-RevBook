@@ -33,4 +33,6 @@ public class Comment {
     @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
     @JoinColumn(name="parent_id")
     List<Comment> replyComment;
+
+    private Long postId;
 }
