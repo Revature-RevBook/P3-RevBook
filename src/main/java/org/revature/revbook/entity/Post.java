@@ -1,41 +1,10 @@
 package org.revature.revbook.entity;
 
-<<<<<<< HEAD
-=======
 import com.fasterxml.jackson.annotation.JsonManagedReference;
->>>>>>> e00470297e87e6a9623b08438f6ffb8d923b7c23
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-<<<<<<< HEAD
-import org.springframework.web.bind.annotation.CrossOrigin;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@CrossOrigin(origins="*")
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
-@ToString
-@Entity
-public class Post {
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long postId;
-    private long userId;
-    private String postBody;
-    private long likes;
-
-    Post(long userId){
-        this.userId = userId;
-        this.postBody = "";
-        this.likes = 0;
-    }
-=======
 
 import javax.persistence.Entity;
 import javax.persistence.*;
@@ -82,5 +51,4 @@ public class Post {
 //        this.post_content = post_content;
 //        this.post_img = post_img;
 //    }
->>>>>>> e00470297e87e6a9623b08438f6ffb8d923b7c23
 }
