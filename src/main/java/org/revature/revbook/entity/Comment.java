@@ -28,4 +28,9 @@ public class Comment {
     @Column(name = "creation_date")
     @CreationTimestamp
     private Timestamp currentDate;
+    @Column(name="parent_id")
+    private Long parentId;
+    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+    @JoinColumn(name="parent_id")
+    List<Comment> replyComment;
 }

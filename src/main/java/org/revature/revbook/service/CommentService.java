@@ -15,6 +15,7 @@ public class CommentService {
     CommentRepository commentRepository;
 
     public Comment postComment(Comment comment){
+        System.out.println(comment.getParentId());
         commentRepository.save(comment);
         return comment;
     }
@@ -22,6 +23,7 @@ public class CommentService {
     public List<Comment> get_all_comments() {
         return commentRepository.findAll();
     }
+
     public Comment get_by_id(long id) {
         return commentRepository.findById(id).get();
     }
