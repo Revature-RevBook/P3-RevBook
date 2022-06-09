@@ -57,7 +57,7 @@ public class RevBookApplicationTest
     //============================================================================================================
     @Test
     // Use the @Order annotation to supply the test order for each specific test:
-    @Order(1)
+   // @Order(1)
     public void shouldAnswerWithTrue()
     {
         System.out.println("Test 1");
@@ -65,7 +65,7 @@ public class RevBookApplicationTest
     }
 
     @Test
-    @Order(2)
+   // @Order(2)
     public void shouldAnswerWithFalse()
     {
         System.out.println("Test 2");
@@ -73,7 +73,7 @@ public class RevBookApplicationTest
     }
 
     @Test
-    @Order(3)
+  //  @Order(3)
     public void shouldAnswerWithEquals()
     {
         System.out.println("Test 3");
@@ -84,32 +84,40 @@ public class RevBookApplicationTest
                                                CREATE TESTS
      ==================================================================================================================*/
     @Test
+    @Order(5)
     void testAddComment(){
 
 
     }
 
     @Test
+    @Order(9)
     void testAddMessage(){
 
     }
 
     @Test
+    @Order(13)
     void testAddPost(){
 
     }
 
     @Test
+    @Order(1)
     void testAddUser(){
+
+
 
     }
 
     @Test
+    @Order(17)
     void testAddVoteComment(){
 
     }
 
     @Test
+    @Order(21)
     void testAddVotePost(){
 
     }
@@ -119,31 +127,37 @@ public class RevBookApplicationTest
      ==================================================================================================================*/
 
     @Test
+    @Order(6)
     void testGetComment(){
 
     }
 
     @Test
+    @Order(10)
     void testGetMessage(){
 
     }
 
     @Test
+    @Order(14)
     void testGetPost(){
 
     }
 
     @Test
+    @Order(2)
     void testGetUser(){
 
     }
 
     @Test
+    @Order(18)
     void testGetVoteComment(){
 
     }
 
     @Test
+    @Order(22)
     void testGetVotePost(){
 
     }
@@ -153,31 +167,37 @@ public class RevBookApplicationTest
      ==================================================================================================================*/
 
     @Test
+    @Order(7)
     void testUpdateComment(){
 
     }
 
     @Test
+    @Order(11)
     void testUpdateMessage(){
 
     }
 
     @Test
+    @Order(15)
     void testUpdatePost(){
 
     }
 
     @Test
+    @Order(3)
     void testUpdateUser(){
 
     }
 
     @Test
+    @Order(19)
     void testUpdateVoteComment(){
 
     }
 
     @Test
+    @Order(23)
     void testUpdateVotePost(){
 
     }
@@ -187,31 +207,37 @@ public class RevBookApplicationTest
      ==================================================================================================================*/
 
     @Test
+    @Order(8)
     void testDeleteComment(){
 
     }
 
     @Test
+    @Order(12)
     void testDeleteMessage(){
 
     }
 
     @Test
+    @Order(16)
     void testDeletePost(){
 
     }
 
     @Test
+    @Order(4)
     void testDeleteUser(){
 
     }
 
     @Test
+    @Order(20)
     void testDeleteVoteComment(){
 
     }
 
     @Test
+    @Order(24)
     void testDeleteVotePost(){
 
     }
