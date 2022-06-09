@@ -14,18 +14,18 @@ export class PostService {
   }
 
   getAllPosts() {
-    return this.http.get<Post[]>('http://localhost:9001/posts');
+    return this.http.get<Post[]>('http://localhost:8080/posts');
   }
 
   getPostById(id:Number) {
-    return this.http.get<Post>(`http://localhost:9001/posts/${id}`);
+    return this.http.get<Post>(`http://localhost:8080/posts/${id}`);
   }
 
   updatePost(post:Post) {
-    return this.http.put<Post>(`http://localhost:9001/posts/${post.id}`,post);
+    return this.http.put<Post>(`http://localhost:8080/posts/`,post);
   }
 
   deletePost(id:Number) {
-    return this.http.delete(`http://localhost:9001/posts/${id}`);
+    return this.http.delete(`http://localhost:8080/posts/${id}`);
   }
 }

@@ -14,13 +14,12 @@ export class PostFeedComponent implements OnInit {
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
-    this.getAllBooks();
+    this.getAllPosts();
   }
 
-  getAllbooks() {
+  getAllPosts() {
     this.postService.getAllPosts().subscribe((posts:Post[]) =>{
       this.posts = posts;
     })
   }
-
 }
