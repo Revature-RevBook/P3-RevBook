@@ -1,0 +1,53 @@
+<section>
+    <div class="container"><br><br>
+      
+      
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+          <div class="row">
+            <div class="col text-center">
+              <h1>Register</h1>
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col mt-4">
+              <input type="text" class="form-control" placeholder="user name" [(ngModel)]="user.user_name">
+            </div>
+            <span *ngIf="hasUserNameError"  style="color: red">
+              Please enter user Name
+            </span>
+          </div>
+          <div class="row align-items-center mt-4">
+            <div class="col">
+              <input type="email" class="form-control" placeholder="email" [(ngModel)]="user.user_email">
+            </div>
+            <span *ngIf="hasEmailError" style="color: red">
+              Please enter email address
+            </span>
+          </div>
+          <div class="row align-items-center mt-4">
+            <div class="col">
+              <input type="password" class="form-control" placeholder="password"  [(ngModel)]="user.password">
+            </div>
+            <!-- <div class="col">
+              <input type="password" class="form-control" placeholder="Confirm Password">
+            </div> -->
+          </div>
+          <span *ngIf="haspasswordError" style="color: red">
+            Please enter your password
+          </span>
+          <div class="row justify-content-start mt-4">
+            <div class="col">
+              <button class="btn btn-primary mt-4" (click)="register()">Submit</button>
+            </div>
+          </div><br>
+          <span *ngIf="!isUserUnique" style="color: red">
+            User name or Email is not unique. Please register with unique name and email address
+          </span>
+          <span *ngIf="hasSuccessfullyRegistered" style="color: rgb(0, 255, 76)">
+            You have been registered Successfully.
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
