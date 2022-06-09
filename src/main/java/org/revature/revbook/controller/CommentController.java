@@ -20,6 +20,11 @@ public class CommentController {
         return commentService.get_all_comments();
     }
 
+    @GetMapping("/{id}")
+    public List<Comment> getFromPost(@PathVariable("id")Long id){
+        return commentService.get_comments(id);
+    }
+
     @PostMapping
     public Comment post(@RequestBody Comment comment){
         System.out.println("Posting comment");
