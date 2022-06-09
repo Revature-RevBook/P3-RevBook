@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bootstrap-format',
@@ -7,13 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BootstrapFormatComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(
+    private router: Router,
+    private http: HttpClient) 
+    { }
 
   ngOnInit(): void {
   }
 
   login() {
     console.log("Clicked Login Button");
+    this.router.navigate(['/login']);
   }
 
   signup() {
