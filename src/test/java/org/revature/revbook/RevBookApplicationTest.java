@@ -40,5 +40,144 @@ public class RevBookApplicationTest
         Assertions.assertEquals(5, 5);
     }
 
-    //Create tests here
+    /*==================================================================================================================
+                                               CREATE TESTS
+     ==================================================================================================================*/
+    @Test
+    void testAddComment(){
+
+    }
+
+    @Test
+    void testAddMessage(){
+
+    }
+
+    @Test
+    void testAddPost(){
+
+    }
+
+    @Test
+    void testAddUser(){
+
+    }
+
+    @Test
+    void testAddVoteComment(){
+
+    }
+
+    @Test
+    void testAddVotePost(){
+
+    }
+
+    /*==================================================================================================================
+                                               READ TESTS
+     ==================================================================================================================*/
+
+    @Test
+    void testGetComment(){
+
+    }
+
+    @Test
+    void testGetMessage(){
+
+    }
+
+    @Test
+    void testGetPost(){
+
+    }
+
+    @Test
+    void testGetUser(){
+
+    }
+
+    @Test
+    void testGetVoteComment(){
+
+    }
+
+    @Test
+    void testGetVotePost(){
+
+    }
+
+    /*==================================================================================================================
+                                               UPDATE TESTS
+     ==================================================================================================================*/
+
+    @Test
+    void testUpdateComment(){
+
+    }
+
+    @Test
+    void testUpdateMessage(){
+
+    }
+
+    @Test
+    void testUpdatePost(){
+
+    }
+
+    @Test
+    void testUpdateUser(){
+
+    }
+
+    @Test
+    void testUpdateVoteComment(){
+
+    }
+
+    @Test
+    void testUpdateVotePost(){
+
+    }
+
+    /*==================================================================================================================
+                                               DELETE TESTS
+     ==================================================================================================================*/
+
+    @Test
+    void testDeleteComment(){
+
+    }
+
+    @Test
+    void testDeleteMessage(){
+
+    }
+
+    @Test
+    void testDeletePost(){
+
+    }
+
+    @Test
+    void testDeleteUser(){
+
+    }
+
+    @Test
+    void testDeleteVoteComment(){
+
+    }
+
+    @Test
+    void testDeleteVotePost(){
+
+    }
+    
+
+    /*==================================================================================================================
+                                               OTHER TESTS
+     ==================================================================================================================*/
+
 }
