@@ -26,7 +26,7 @@ public class Post {
     @Column(columnDefinition = "TEXT")
     private String post_content;
     //Todo ask about storage of an image
-    private List<String> post_img;
+    //private List<String> post_img;
 
     public Post(String post_title, String post_content) {
         this.post_title = post_title;
@@ -35,11 +35,11 @@ public class Post {
         this.post_content = post_content;
     }
 
-    public Post(String post_title, String post_content, List<String> post_img) {
-        this.post_title = post_title;
-        this.created_at = new Timestamp(System.currentTimeMillis());
-        this.updated_at = new Timestamp(System.currentTimeMillis());
-        this.post_content = post_content;
-        this.post_img = post_img;
-    }
+//    public Post(String post_title, String post_content, List<String> post_img) {
+//        this.post_title = post_title;
+//        this.created_at = new Timestamp(System.currentTimeMillis());
+//        this.updated_at = new Timestamp(System.currentTimeMillis());
+//        this.post_content = post_content;
+//        this.post_img = post_img;
+//    }
 }

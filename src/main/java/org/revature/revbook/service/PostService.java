@@ -24,7 +24,7 @@ public class PostService {
         post.setPost_title(post.getPost_title());
         post.setUpdated_at(new Timestamp(System.currentTimeMillis()));
         post.setPost_content(post.getPost_content());
-        post.setPost_img(post.getPost_img());
+        //post.setPost_img(post.getPost_img());
         postRepository.save(postDB);
         return postDB;
     }

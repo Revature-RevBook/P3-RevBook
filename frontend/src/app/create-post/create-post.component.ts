@@ -17,16 +17,14 @@ export class CreatePostComponent implements OnInit {
     this.post = {
         post_title: '',
         post_content: '',
-        
+        post_img: ''
     }
   }
 
   createBook() {
-    this.postService.createPost(this.post).subscribe(
-      post => {
+    this.postService.createPost(this.post).subscribe((post: Partial<Post>) => {
         this.post = post;
-      }
-    )
+      })
   }
 
 }
