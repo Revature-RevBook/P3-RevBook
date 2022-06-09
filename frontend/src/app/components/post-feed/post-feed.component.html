@@ -1,0 +1,11 @@
+<div class="container">
+
+    <div *ngFor = "let post of FakePosts; index as i" class="card card--arrow" >
+      <span routerLink="{{post.post_id}}">
+      <p class="card__text">Title:<br><em>{{post.post_title}}</em></p>
+      <p class="card__text">Created By User:<br><em>{{post.post_created_by}}</em></p>
+      <p class="card__text">Created At: <br><em>{{dates[i]}}</em></p>
+      <p class="card__text">Post Content: <br><em>{{contents[i]}}</em></p>
+      </span>
+    </div>
+  </div>

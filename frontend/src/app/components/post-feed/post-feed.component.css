@@ -3,19 +3,22 @@
     max-width: 840px;
     padding: 40px;
     margin: 0 auto;
-    grid-template-columns: 4fr;
+    /* grid-template-columns: 4fr; */
     gap: 40px;
   }
   
-  @media (min-width: 600px){
+  /* @media (min-width: 600px){
     .container {
       grid-template-columns: 1fr 1fr;
     }
   }
-  
+   */
+
   .card {
+    text-align: center;
     display: block;
     width: 100%;
+    margin: 0 auto;
     height: 400px;
     background: #224;
     padding: 20px;

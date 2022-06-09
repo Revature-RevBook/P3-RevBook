@@ -6,14 +6,16 @@ import { AppComponent } from './app.component';
 import { BootstrapFormatComponent } from './bootstrap-format/bootstrap-format.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CreatePostComponent } from './components/create-post/create-post.component';
+import { PostFeedComponent } from './components/post-feed/post-feed.component';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BootstrapFormatComponent,
     RegisterComponent,
-    CreatePostComponent
+    PostFeedComponent,
+    PostDetailsComponent
   ],
   imports: [
     BrowserModule,
