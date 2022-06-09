@@ -1,7 +1,9 @@
 package org.revature.revbook.service;
 
 import org.revature.revbook.data.PostRepository;
+import org.revature.revbook.data.Post_imageRepository;
 import org.revature.revbook.entity.Post;
+import org.revature.revbook.entity.post_images;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,26 @@ public class PostService {
     @Autowired
     PostRepository postRepository;
 
+    @Autowired
+    Post_imageRepository post_imageRepository;
+
     public Post create_post(Post post){return postRepository.save(post);}
+
+    public Post add_image_to_post(Long post_id, Long image_id){
+        Post post = postRepository.findById(post_id).get();
+        post_images post_images = post_imageRepository.findById(image_id).get();
+        post.addImage(post_images);
+        postRepository.save(post);
+        return post;
+    }
+
+    public Post remove_image_from_post(Long post_id, Long image_id){
+        Post post = postRepository.findById(post_id).get();
+        post_images post_images = post_imageRepository.findById(image_id).get();
+        post.removeImages(post_images);
+        postRepository.save(post);
+        return post;
+    }
 
     public Post read_post_by_post_id(long id) {return postRepository.findById(id).get();}
 
