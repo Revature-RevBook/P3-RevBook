@@ -11,7 +11,9 @@ describe('CreatePostComponent', () => {
       declarations: [ CreatePostComponent ]
     })
     .compileComponents();
+  });
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(CreatePostComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
