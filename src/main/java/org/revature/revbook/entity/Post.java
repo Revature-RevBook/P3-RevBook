@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-@NoArgsConstructor
+
 @AllArgsConstructor
 @Data
 @Entity
@@ -41,6 +41,12 @@ public class Post {
         this.created_at = new Timestamp(System.currentTimeMillis());
         this.updated_at = new Timestamp(System.currentTimeMillis());
         this.post_content = post_content;
+        this.post_img = new ArrayList<>();
+    }
+
+    public Post() {
+        this.created_at = new Timestamp(System.currentTimeMillis());
+        this.updated_at = new Timestamp(System.currentTimeMillis());
         this.post_img = new ArrayList<>();
     }
 

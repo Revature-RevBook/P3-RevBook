@@ -19,6 +19,6 @@ import javax.persistence.Id;
 public class post_images {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long post_id;
+    private long image_id;
     private String image_url;
 }

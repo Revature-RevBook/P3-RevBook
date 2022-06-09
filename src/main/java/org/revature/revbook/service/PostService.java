@@ -42,9 +42,9 @@ public class PostService {
 
     public Post update_post(Post post){
         Post postDB = postRepository.findById(post.getPost_id()).get();
-        post.setPost_title(post.getPost_title());
-        post.setUpdated_at(new Timestamp(System.currentTimeMillis()));
-        post.setPost_content(post.getPost_content());
+        postDB.setPost_title(post.getPost_title());
+        postDB.setUpdated_at(new Timestamp(System.currentTimeMillis()));
+        postDB.setPost_content(post.getPost_content());
         //post.setPost_img(post.getPost_img());
         postRepository.save(postDB);
         return postDB;
