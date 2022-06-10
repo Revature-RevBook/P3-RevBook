@@ -10,6 +10,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class PostImageDTO {
-    private Long post_id;
-    private Long image_id;
+    private Long postId;
+    private Long imageId;
 }

@@ -18,11 +18,11 @@ public class PostImageService {
 
     public List<PostImages> readAllPostImages() {return postImageRepository.findAll();}
 
-    public PostImages updatePostImage(PostImages PostImages) {
-        PostImages postImagesDB = postImageRepository.findById(PostImages.getImageId()).get();
-        postImagesDB.setImageUrl(PostImages.getImageUrl());
+    public PostImages updatePostImage(PostImages postImages) {
+        PostImages postImagesDB = postImageRepository.findById(postImages.getImageId()).get();
+        postImagesDB.setImageUrl(postImages.getImageUrl());
         postImageRepository.save(postImagesDB);
-        return PostImages;
+        return postImages;
     }
 
     public void deletePostImage(long id) {
