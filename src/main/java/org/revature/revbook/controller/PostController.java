@@ -17,26 +17,26 @@ public class PostController {
     PostService postService;
 
     @PostMapping
-    public Post create_post(@RequestBody Post post) {return postService.create_post(post);}
+    public Post createPost(@RequestBody Post post) {return postService.createPost(post);}
 
     @PutMapping("/add")
-    public Post add_image_to_post(@RequestBody PostImageDTO postImageDTO) {
+    public Post addImageToPost(@RequestBody PostImageDTO postImageDTO) {
         Long post_id = postImageDTO.getPost_id();
         Long image_id = postImageDTO.getImage_id();
-        return postService.add_image_to_post(post_id,image_id);
+        return postService.addImageToPost(post_id,image_id);
     }
 
     @GetMapping("/{id}")
-    public Post read_post_by_post_id(@PathVariable long id){return postService.read_post_by_post_id(id);}
+    public Post readPostByPostId(@PathVariable long id){return postService.readPostByPostId(id);}
 
     @GetMapping
-    public List<Post> read_all_post() {return postService.read_all_post();}
+    public List<Post> readAllPost() {return postService.readAllPost();}
 
     @PutMapping
-    public Post update_post(@RequestBody Post post) {return postService.update_post(post);}
+    public Post updatePost(@RequestBody Post post) {return postService.updatePost(post);}
 
     @DeleteMapping("/{id}")
-    public void delete_post(@PathVariable long id) {postService.delete_post(id);}
+    public void deletePost(@PathVariable long id) {postService.deletePost(id);}
 
 
 }

@@ -1,9 +1,7 @@
 package org.revature.revbook.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Entity;
@@ -13,7 +11,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-@NoArgsConstructor
+
 @AllArgsConstructor
 @Data
 @Entity
@@ -21,27 +19,33 @@ import java.util.List;
 public class Post {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long post_id;
-    private String post_title;
-    private Timestamp created_at;
-    private Timestamp updated_at;
+    private long postId;
+    private String postTitle;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
     @Column(columnDefinition = "TEXT")
-    private String post_content;
+    private String postContent;
     //Todo ask about storage of an image
     //@JsonManagedReference(value = "post_image")
-    @OneToMany(targetEntity = post_images.class, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = PostImages.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "post_fk", referencedColumnName = "post_id")
-    private List<post_images> post_img;
+    private List<PostImages> postImages;
 //    @ManyToMany(targetEntity = User.class, cascade = CascadeType.ALL)
 //    @JoinColumn()
 //    private List<User> likes;
 
-    public Post(String post_title, String post_content) {
-        this.post_title = post_title;
-        this.created_at = new Timestamp(System.currentTimeMillis());
-        this.updated_at = new Timestamp(System.currentTimeMillis());
-        this.post_content = post_content;
-        this.post_img = new ArrayList<>();
+    public Post(String post_title, String postContent) {
+        this.postTitle = post_title;
+        this.createdAt = new Timestamp(System.currentTimeMillis());
+        this.updatedAt = new Timestamp(System.currentTimeMillis());
+        this.postContent = postContent;
+        this.postImages = new ArrayList<>();
+    }
+
+    public Post() {
+        this.createdAt = new Timestamp(System.currentTimeMillis());
+        this.updatedAt = new Timestamp(System.currentTimeMillis());
+        this.postImages = new ArrayList<>();
     }
 
 //    public Post(String post_title, String post_content, List<String> post_img) {
@@ -52,6 +56,6 @@ public class Post {
 //        this.post_img = post_img;
 //    }
 
-    public void addImage(post_images post_images) {this.post_img.add(post_images);}
-    public void removeImages(post_images post_images) {this.post_img.remove(post_images);}
+    public void addImage(PostImages PostImages) {this.postImages.add(PostImages);}
+    public void removeImages(PostImages PostImages) {this.postImages.remove(PostImages);}
 }
