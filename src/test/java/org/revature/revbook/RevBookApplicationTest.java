@@ -5,6 +5,7 @@ import org.junit.jupiter.api.*;
 import org.revature.revbook.data.*;
 import org.revature.revbook.entity.Message;
 import org.revature.revbook.service.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -48,8 +49,6 @@ public class RevBookApplicationTest
 
     @Autowired
     VotePostRepository votePostRepository;
-
-
 
 
     //============================================================================================================
