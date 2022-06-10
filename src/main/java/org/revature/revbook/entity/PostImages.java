@@ -16,9 +16,9 @@ import javax.persistence.Id;
 @Entity
 @ToString
 
-public class post_images {
+public class PostImages {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long image_id;
-    private String image_url;
+    private long imageId;
+    private String imageUrl;
 }

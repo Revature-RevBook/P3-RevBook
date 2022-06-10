@@ -1,9 +1,9 @@
 package org.revature.revbook.service;
 
 import org.revature.revbook.data.PostRepository;
-import org.revature.revbook.data.Post_imageRepository;
+import org.revature.revbook.data.PostImageRepository;
 import org.revature.revbook.entity.Post;
-import org.revature.revbook.entity.post_images;
+import org.revature.revbook.entity.PostImages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,39 +16,39 @@ public class PostService {
     PostRepository postRepository;
 
     @Autowired
-    Post_imageRepository post_imageRepository;
+    PostImageRepository post_imageRepository;
 
-    public Post create_post(Post post){return postRepository.save(post);}
+    public Post createPost(Post post){return postRepository.save(post);}
 
-    public Post add_image_to_post(Long post_id, Long image_id){
+    public Post addImageToPost(Long post_id, Long image_id){
         Post post = postRepository.findById(post_id).get();
-        post_images post_images = post_imageRepository.findById(image_id).get();
-        post.addImage(post_images);
+        PostImages PostImages = post_imageRepository.findById(image_id).get();
+        post.addImage(PostImages);
         postRepository.save(post);
         return post;
     }
 
-    public Post remove_image_from_post(Long post_id, Long image_id){
+    public Post removeImageFromPost(Long post_id, Long image_id){
         Post post = postRepository.findById(post_id).get();
-        post_images post_images = post_imageRepository.findById(image_id).get();
-        post.removeImages(post_images);
+        PostImages PostImages = post_imageRepository.findById(image_id).get();
+        post.removeImages(PostImages);
         postRepository.save(post);
         return post;
     }
 
-    public Post read_post_by_post_id(long id) {return postRepository.findById(id).get();}
+    public Post readPostByPostId(long id) {return postRepository.findById(id).get();}
 
-    public List<Post> read_all_post(){return postRepository.findAll();}
+    public List<Post> readAllPost(){return postRepository.findAll();}
 
-    public Post update_post(Post post){
-        Post postDB = postRepository.findById(post.getPost_id()).get();
-        postDB.setPost_title(post.getPost_title());
-        postDB.setUpdated_at(new Timestamp(System.currentTimeMillis()));
-        postDB.setPost_content(post.getPost_content());
+    public Post updatePost(Post post){
+        Post postDB = postRepository.findById(post.getPostId()).get();
+        postDB.setPostTitle(post.getPostTitle());
+        postDB.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+        postDB.setPostContent(post.getPostContent());
         //post.setPost_img(post.getPost_img());
         postRepository.save(postDB);
         return postDB;
     }
 
-    public void delete_post(Long id){postRepository.deleteById(id);}
+    public void deletePost(Long id){postRepository.deleteById(id);}
 }
