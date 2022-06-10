@@ -23,11 +23,16 @@ public class UserService {
 
     public User updateUser(User user, Long user_id){
         User updatedUser = userRepository.findById(user_id).get();
-        if (user.getUser_name() != null) {updatedUser.setUser_name(user.getUser_name());}
-        if (user.getUser_password() != null) {updatedUser.setUser_password(user.getUser_password());}
-        if (user.getUser_email() != null) {updatedUser.setUser_email(user.getUser_email());}
-        if (user.getUser_profile_img_link() != null) {updatedUser.setUser_profile_img_link(user.getUser_profile_img_link());}
+        if (user.getUser_name() != null && user.getUser_name() != "") {updatedUser.setUser_name(user.getUser_name());}
+        if (user.getUser_password() != null && user.getUser_password() != "") {updatedUser.setUser_password(user.getUser_password());}
+        if (user.getUser_email() != null && user.getUser_email() != "") {updatedUser.setUser_email(user.getUser_email());}
+        if (user.getUser_profile_img_link() != null && user.getUser_profile_img_link() != "") {updatedUser.setUser_profile_img_link(user.getUser_profile_img_link());}
         return userRepository.save(updatedUser);
     }
 
+    public User updateUsername(User user, Long user_id){
+        User updatedUser = userRepository.findById(user_id).get();
+        updatedUser.setUser_name(user.getUser_name());
+        return userRepository.save(updatedUser);
+    }
 }

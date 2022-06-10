@@ -1,0 +1,60 @@
+<h1>User Details</h1>
+<br><br>
+<h4>Enter New Profile Information</h4>
+<div class="username-wrapper">
+    <div class="card">
+        <div class="card-body">
+            <form class="form-signin"  (ngSubmit)="usernameUpdate()" #signInForm="ngForm" ngNativeValidate>
+                <h4 class="h7 mb-3 fw-normal">Enter New Username</h4>          
+                <div class="col-5">
+                  <label for="floatingInput">Username</label>
+                  <input type="user_name" [(ngModel)]="updateUser.user_name" class="form-control" id="floatingInput" name="user_name" placeholder="Username" required autofocus ngModel>
+                </div>
+            <br>
+                <!-- <button class="w-25 btn btn-sm btn-primary" type="submit">Submit</button> -->
+              <!-- <div class="alert alert-danger" role="alert" *ngIf="" >
+                Please fill in all fields
+              </div>
+
+              <div class="alert alert-danger" role="alert" *ngIf="" >
+                Invalid Username or Password
+              </div> -->
+              <br>
+              </form>
+              <form class="form-signin"  (ngSubmit)="usernameUpdate()" #signInForm="ngForm">
+                <h4 class="h7 mb-3 fw-normal">Enter New Password</h4>          
+                <div class="col-5">
+                  <label for="floatingInput">Password</label>
+                  <input type="user_password" [(ngModel)]="updateUser.user_password" class="form-control" id="floatingInput" name="user_password" placeholder="Password" required autofocus ngModel>
+                 </div>
+                 <br>
+                 <form class="form-signin"  (ngSubmit)="usernameUpdate()" #signInForm="ngForm">
+                    <h4 class="h7 mb-3 fw-normal">Enter New Email</h4>          
+                    <div class="col-5">
+                      <label for="floatingInput">Email</label>
+                      <input type="user_email" [(ngModel)]="updateUser.user_email" class="form-control" id="floatingInput" name="user_email" placeholder="Email" required autofocus ngModel>
+                    </div>
+                 </form>
+            <br>
+            <form class="form-signin"  (ngSubmit)="usernameUpdate()" #signInForm="ngForm">
+                <h4 class="h7 mb-3 fw-normal">Enter New Profile Image Link</h4>          
+                <div class="col-5">
+                  <label for="floatingInput">Profile Image Link</label>
+                  <input type="user_email" [(ngModel)]="updateUser.user_profile_img_link" class="form-control" id="floatingInput" name="user_profile_img_link" placeholder="Profile Image Link" required autofocus ngModel>
+                </div>
+             </form>
+             <br>
+                <button class="w-25 btn btn-sm btn-primary" type="submit">Submit</button>
+              <div class="alert alert-danger" role="alert" *ngIf="" >
+                Please fill in all fields
+              </div>
+
+              <div class="alert alert-danger" role="alert" *ngIf="" >
+                Invalid Username or Password
+              </div>
+              </form>
+        </div>
+        </div>
+
+</div>
+
