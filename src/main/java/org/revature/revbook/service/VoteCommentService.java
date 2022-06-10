@@ -33,4 +33,27 @@ public class VoteCommentService {
         }
         return res;
     }
+
+    public VoteComment addVote(VoteComment vote) {
+        voteCommentRepository.save(vote);
+//        System.out.println(postService.getAllVotes(vote.getPost_id()));
+        return vote;
+    }
+
+    public VoteComment editVote(VoteComment vote) {
+        List<VoteComment> votes = voteCommentRepository.findAll();
+        for(VoteComment v : votes){
+            if(v.getComment_id() == vote.getComment_id() && v.getVoter_id() == vote.getVoter_id()) {
+                System.out.println("Found to update");
+                vote.setVote_id(v.getVote_id());
+                voteCommentRepository.save(vote);
+            }
+        }
+
+        return vote;
+    }
+
+    public void deleteVotePost(long id){
+        voteCommentRepository.deleteById(id);
+    }
 }
