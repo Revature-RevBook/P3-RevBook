@@ -1,6 +1,7 @@
+import { CreatePostComponent } from './../create-post/create-post.component';
 import { Post } from './../post';
 import { VotePostService } from './../vote-post.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { VotePost } from '../vote-post';
 
 @Component({
@@ -16,14 +17,12 @@ export class VotePostComponent implements OnInit {
   constructor(private votePostService:VotePostService) { }
 
   ngOnInit(): void {
-    //I need a way to pass in the post this votePost is associated with
-    //this.post = 
-    this.votePost = this.getVotePostByPostId(this.post);
+    
   }
 
-  addVotePost(){
+  createVotePost(post: Post){
+    this.post = post
     this.votePost.post_id = this.post.post_id;
-    //this.votePost.voter_id = post.poster_id;
     this.votePost.created_at = new Date();
 
     this.votePostService.createVotePost(this.votePost).subscribe((votePost:VotePost)=>{
@@ -31,14 +30,15 @@ export class VotePostComponent implements OnInit {
     })
   }
 
-   getVotePostByPostId(post:Post) : any{
-    this.votePostService.getVotePostByPostId(post.post_id!).subscribe((votePost:VotePost)=>{
+  getVotePostByPostId() : any{
+    this.votePostService.getVotePostByPostId(this.post.post_id!).subscribe((votePost:VotePost)=>{
       return votePost;
     })
   }
 
   incrementVotePost(){
     this.votePost.vote++;
+    this.votePost.updated_at = new Date();
 
     this.votePostService.updateVotePost(this.votePost).subscribe((votePost:VotePost)=>{
       console.log(votePost);
@@ -47,7 +47,8 @@ export class VotePostComponent implements OnInit {
 
   decrementVotePost(){
     this.votePost.vote--;
-
+    this.votePost.updated_at = new Date();
+    
     this.votePostService.updateVotePost(this.votePost).subscribe((votePost:VotePost)=>{
       console.log(votePost);
     })

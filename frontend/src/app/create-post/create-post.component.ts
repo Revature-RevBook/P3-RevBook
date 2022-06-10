@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { VotePostComponent } from './../vote-post/vote-post.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Post } from '../post'
 import { PostService } from '../post.service';
 
@@ -8,6 +9,9 @@ import { PostService } from '../post.service';
   styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent implements OnInit {
+
+  @ViewChild(VotePostComponent)
+  private votePostComponent!: VotePostComponent;
 
   post!: Partial<Post>;
 
@@ -25,6 +29,7 @@ export class CreatePostComponent implements OnInit {
     this.postService.createPost(this.post).subscribe((post: Partial<Post>) => {
         this.post = post;
       })
-  }
 
+      this.votePostComponent.createVotePost(this.post);
+  }
 }

@@ -29,7 +29,4 @@ public class VotePost {
     private int vote;
     private long post_id;
     private long voter_id;
-
-
-
 }
