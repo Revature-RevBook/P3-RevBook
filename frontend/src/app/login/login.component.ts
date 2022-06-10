@@ -39,47 +39,13 @@ export class LoginComponent implements OnInit {
     let url = 'user/login';
     let username = this.model.username;
     let password = this.model.password;
-    // url +="?username=" + username + "&password=" + password;
-    // sends request through proxy for authentication
     const params = new HttpParams()
   .set("username",username)
   .set("password",password);
-    // this.http.post<any>(url, {
-    //   username: this.model.username,
-    //   password: this.model.password
-    // })
     this.http.get('http://localhost:8080/api/user/login',{params})
     .subscribe(res => {
-      // gets authentication info from http response for angular usage
         if (res) {
         let user = res;
-        // this.model2 = session.sessionUser;
-
-        // refer to each login session by 'token'
-        // sessionStorage.setItem(
-        //   'token',
-        //   this.sessionId
-        // );
-
-        // localStorage.setItem('userId', this.model2.userId);
-        // localStorage.setItem('user-username', this.model2.username);
-        // localStorage.setItem('user-password', this.model2.password);
-
-         // For later implementation of roles
-        // localStorage.setItem('user-role', this.model2.role.role_name);
-
-       
-        // if(this.model2.role.role_name == 'ADMIN') {
-        //   let url = 'api/techstacks/user/' + this.model2.userId;
-        //   this.http.get<any>(url, {}).subscribe(res => {
-        //     localStorage.setItem('techStackArray', res);
-        //     let techStackArray:any = res;
-        //     for(let x = 0; x < techStackArray.length; x++) {
-        //       console.log(techStackArray[x]);
-        //     }
-        //   })
-        // }
-
         sessionStorage.setItem(
           'username',
           this.model.username
