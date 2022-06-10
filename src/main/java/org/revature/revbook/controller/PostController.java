@@ -21,8 +21,8 @@ public class PostController {
 
     @PutMapping("/add")
     public Post addImageToPost(@RequestBody PostImageDTO postImageDTO) {
-        Long post_id = postImageDTO.getPost_id();
-        Long image_id = postImageDTO.getImage_id();
+        Long post_id = postImageDTO.getPostId();
+        Long image_id = postImageDTO.getImageId();
         return postService.addImageToPost(post_id,image_id);
     }
 

@@ -28,7 +28,7 @@ public class Post {
     //Todo ask about storage of an image
     //@JsonManagedReference(value = "post_image")
     @OneToMany(targetEntity = PostImages.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "post_fk", referencedColumnName = "post_id")
+    @JoinColumn(name = "postFk", referencedColumnName = "postId")
     private List<PostImages> postImages;
 //    @ManyToMany(targetEntity = User.class, cascade = CascadeType.ALL)
 //    @JoinColumn()
