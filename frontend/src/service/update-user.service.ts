@@ -15,10 +15,10 @@ export class UpdateUserService {
 
   update(updateUser: UpdateUser): Observable<object> {
     //hardcoded id for testing purposes
-    return this.httpClient.put<UpdateUser>(`http://localhost:8080/user/update/2`, updateUser);
+    // return this.httpClient.put<UpdateUser>(`http://localhost:8080/user/update/2`, updateUser);
 
     //non hardcoded commented out for now
-    // return this.httpClient.put<UpdateUser>(`http://localhost:8080/user/update/${sessionStorage.getItem("user_id")}`, updateUser);
+    return this.httpClient.put<UpdateUser>(`http://localhost:8080/user/update/${sessionStorage.getItem("user_id")}`, updateUser);
 
   }
 }
