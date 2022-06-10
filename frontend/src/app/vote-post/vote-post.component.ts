@@ -12,7 +12,7 @@ import { VotePost } from '../vote-post';
 export class VotePostComponent implements OnInit {
 
   votePost!: VotePost;
-  post!: Post;
+  post!: Partial<Post>;
 
   constructor(private votePostService:VotePostService) { }
 
@@ -20,7 +20,7 @@ export class VotePostComponent implements OnInit {
     
   }
 
-  createVotePost(post: Post){
+  createVotePost(post: Partial<Post>){
     this.post = post
     this.votePost.post_id = this.post.post_id;
     this.votePost.created_at = new Date();
@@ -48,7 +48,7 @@ export class VotePostComponent implements OnInit {
   decrementVotePost(){
     this.votePost.vote--;
     this.votePost.updated_at = new Date();
-    
+
     this.votePostService.updateVotePost(this.votePost).subscribe((votePost:VotePost)=>{
       console.log(votePost);
     })
