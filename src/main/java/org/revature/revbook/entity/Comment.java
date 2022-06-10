@@ -35,4 +35,7 @@ public class Comment {
     List<Comment> replyComment;
 
     private Long postId;
+    private Long userId;
+
+    //List<VoteComment> votes;
 }
