@@ -22,7 +22,7 @@ export class PostService {
   }
 
   updatePost(post:Post) {
-    return this.http.put<Post>(`http://localhost:9001/posts/${post.id}`,post);
+    return this.http.put<Post>(`http://localhost:9001/posts/${post.post_id}`,post);
   }
 
   deletePost(id:Number) {

@@ -2,8 +2,6 @@ import { Post } from './../post';
 import { VotePostService } from './../vote-post.service';
 import { Component, OnInit } from '@angular/core';
 import { VotePost } from '../vote-post';
-import { Post } from '../post';
-import { timeStamp } from 'console';
 
 @Component({
   selector: 'app-vote-post',
@@ -19,11 +17,12 @@ export class VotePostComponent implements OnInit {
 
   ngOnInit(): void {
     //I need a way to pass in the post this votePost is associated with
+    //this.post = 
     this.votePost = this.getVotePostByPostId(this.post);
   }
 
-  addVotePost(post:Post){
-    this.votePost.post_id = post.post_id;
+  addVotePost(){
+    this.votePost.post_id = this.post.post_id;
     //this.votePost.voter_id = post.poster_id;
     this.votePost.created_at = new Date();
 
@@ -35,7 +34,6 @@ export class VotePostComponent implements OnInit {
    getVotePostByPostId(post:Post) : any{
     this.votePostService.getVotePostByPostId(post.post_id!).subscribe((votePost:VotePost)=>{
       return votePost;
-      console.log(votePost);
     })
   }
 
