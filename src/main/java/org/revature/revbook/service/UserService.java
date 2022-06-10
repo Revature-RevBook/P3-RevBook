@@ -6,11 +6,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
+
     @Autowired
     UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public User getUser(Long user_id) throws Exception {
+        Optional<User> userOrNull  = userRepository.findById(user_id);
+        if (userOrNull.isPresent()) {
+            return userOrNull.get();
+        } else {
+            throw new Exception("Cannot find the user with id: " + user_id);
+        }
+    }
+
+    public User register(User user) {
+        return userRepository.save(user);
+    }
 
     // AddUser method
     // User that is passed from the request will have their password encoded into BCrypt before being
@@ -22,17 +41,13 @@ public class UserService {
     }
 
     public User authenticate(String username, String password){
-        User user = userRepository.getByUsernameAndPassword(username, password).orElse(null);
-
-//        if(user == null || user.isBanned()){
-//            user = null;
-//        }
+        User user = userRepository.getByUserNameAndPassword(username, password).orElse(null);
         return user;
     }
 
     // GetById method
     // Given the provided userId, this is passed into the UserRepository to query to find that user and
-    //  return that user:
+    // return that user:
     public User getById(Long userId) {
         return userRepository.findById(userId).get();
     }
@@ -59,12 +74,9 @@ public class UserService {
         userRepository.deleteById(userId);
     }
 
-    // LoadUserByUserName method
-    // This is the overridden method from the UserDetailsService that is used to retrieve the
-    //  User object from the database by querying with the supplied username:
-
-    public User loadUserByUsername(String username) {
-        return userRepository.findByUsername(username);
+    //ensures no two users share both username and email combo
+    public Boolean isUnique(User user) {
+        List<User> returnedUsers = userRepository.getByUserNameAndUserEmail(user.getUserName(), user.getUserEmail());
+        return returnedUsers.size() < 1;
     }
-
 }

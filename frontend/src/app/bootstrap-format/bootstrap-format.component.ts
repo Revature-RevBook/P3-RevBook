@@ -25,6 +25,7 @@ export class BootstrapFormatComponent implements OnInit {
 
   signup() {
     console.log("Clicked Sign Up Button");
+    this.router.navigate(['/register']);
   }
 
 }

@@ -1,0 +1,64 @@
+
+body {
+    font-family: 'Custom', Fallback, sans-serif !important;
+    /*The rest of body styling comes from revature.com style code*/
+    background-color: #f26925!important;
+    border-radius: 25px;
+    margin:auto;
+    padding: 10px;
+    width: fit-content;
+    color: #fff;
+    font-family: 'Futurabold';
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+
+  [aria-selected="true"]{
+    font-family: 'Custom', Fallback, sans-serif !important;
+    border-radius: 25px;
+    padding: 10px;
+    color:#000000;
+    background-color: #FCB414;
+    font-size: 13px;
+  }
+
+  [aria-selected="false"]{
+    font-family: 'Custom', Fallback, sans-serif !important;
+    border-radius: 25px;
+    padding: 10px;
+    color:#000000;
+    font-size: 13px;
+  }
+
+
+  [aria-selected="false"]:hover{
+    background-color:#72A4C2;
+    color:#fff;
+  }
+  button {
+    font-family: 'Custom', Fallback, sans-serif !important;
+    border-radius: 25px;
+    padding: 10px;
+    color:#000000;
+    border: 3px solid #FCB414;
+    text-align: center;
+    background-color: #FCB414;
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+
+  button:hover{
+    background-color:#72A4C2;
+    color:#fff;
+  }
+
+  input{
+      border-radius: 5px;
+
+  }
+
+
+  @font-face {
+    font-family: 'Custom';
+    src: url('assets/fonts/Futura-Std-Bold.otf') format('opentype');
+  }

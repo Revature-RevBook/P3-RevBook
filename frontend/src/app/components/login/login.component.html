@@ -1,37 +1,5 @@
 <!DOCTYPE html>
 
-<!--
-    Original HTML: 
-<link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-</head>
-<body>
-    <h1>Please provide login credentials:</h1>
-    <div id="errorMsg"></div>
-    <form name="form" (ngSubmit)="loginHtml()" #f="ngForm" ngNativeValidate>
-        <div>
-            <label for="username">Username:</label>
-            <br/> 
-            <input id = "username" type="text" name="username" [(ngModel)]="model.username" #username="ngModel" required/>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-           <br/>
-            <input id = "password" type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required/>
-        </div>
-        <br/>
-        <div>
-            <button type = button>Login</button>
-        </div>
-    </form>
-</body>
-</html> -->
-
 <!-- https://mdbootstrap.com/docs/standard/extended/login/ -->
 <html lang = "en">
     <head>
@@ -48,7 +16,7 @@
                 aria-controls="pills-login" aria-selected="true">Login</a>
             </li>
             <li class="nav-item" role="presentation">
-            <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"
+            <a class="nav-link" id="tab-register" data-mdb-toggle="pill" routerLink="/register" role="tab"
                 aria-controls="pills-register" aria-selected="false">Register</a>
             </li>
         </ul>
@@ -90,7 +58,7 @@
         
                 <!-- Register buttons -->
                 <div class="text-center">
-                <p>Not a member? <a href="#!">Register</a></p>
+                <p>Not a member? <a routerLink="/register">Register</a></p>
                 </div>
             </form>
             </div>

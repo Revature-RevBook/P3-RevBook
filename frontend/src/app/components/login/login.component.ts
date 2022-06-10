@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { User } from 'app/entity/user';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,8 @@ import { User } from 'app/entity/user';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  @ViewChild(RegisterComponent) register!:Component;
 
   model: any = {};
   // sessionId: any = "";
@@ -31,10 +34,7 @@ export class LoginComponent implements OnInit {
       password: ""
     }
   }
-
   
-  
-
   loginHtml() {
     let url = 'user/login';
     let username = this.model.username;
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     const params = new HttpParams()
   .set("username",username)
   .set("password",password);
-    this.http.get('http://localhost:8080/api/user/login',{params})
+    this.http.get('http://localhost:8080/api/v1/user/login',{params})
     .subscribe(res => {
         if (res) {
         let user = res;
@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
           'username',
           this.model.username
         );
+        alert("Login successful");
         this.router.navigate(['']);
       } else {
         alert("Login failed.");
@@ -62,4 +63,6 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+
+
 }

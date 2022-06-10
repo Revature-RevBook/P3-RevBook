@@ -1,72 +1,60 @@
 package org.revature.revbook.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.List;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import java.sql.Timestamp;
 
-@Data
+// Lombok annotations
+// annotate here...
+@Table(name = "users")
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@ToString
-@Table(name = "users")
+@Data
 public class User {
 
+    // From Spring website:
+    // https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-property-expressions
+    // Because we treat the underscore character as a reserved character,
+    // we strongly advise following standard Java naming conventions
+    // (that is, not using underscores in property names but using camel case instead)
     // Data members for the User object:
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
+    @NotBlank(message = "Name cannot be blank") //https://www.baeldung.com/spring-boot-bean-validation
     @Column(unique = true)
-    private String username;
+    private String userName;
+    @NotBlank(message = "Email cannot be blank")
+    @Email(message = "Incorrect format")
     @Column(unique = true)
-    private String eMail;
+    private String userEmail;
+    @NotBlank(message = "password cannot be blank")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+    @CreationTimestamp // https://stackoverflow.com/questions/49954812/how-can-you-make-a-created-at-column-generate-the-creation-date-time-automatical
+    private Timestamp createdAt;
+    @UpdateTimestamp
+    private Timestamp updatedAt;
+    private String userProfileImageURL;
 
-    //Constructor without ID:
-    public User(String username, String eMail, String password  ) {
-        this.username = username;
-        this.eMail = eMail;
-        this.password = password;
-
+    public User(String userName, String userEmail) {
+        this.userName = userName;
+        this.userEmail = userEmail;
     }
 
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        return null;
-//    }
-//
-//    // IsAccountNonExpired method
-//    // This method will return if the user account is expired:
-//    @Override
-//    public boolean isAccountNonExpired() {
-//        return true;
-//    }
-//
-//    // IsAccountNonLocked method
-//    // This method will return if the user account is locked:
-//    @Override
-//    public boolean isAccountNonLocked() {
-//        return true;
-//    }
-//
-//    // IsCredentialsNonExpired method
-//    // This method will return if the user account's credentials are expired:
-//    @Override
-//    public boolean isCredentialsNonExpired() {
-//        return true;
-//    }
-//
-//    // IsEnabled method
-//    // This method will return if the user account is enabled or not:
-//    @Override
-//    public boolean isEnabled() {
-//        return true;
-//    }
+    public User(String userName, String userEmail, String password) {
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.password = password;
+    }
 }
