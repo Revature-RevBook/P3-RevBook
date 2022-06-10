@@ -37,5 +37,7 @@ public class Comment {
     private Long postId;
     private Long userId;
 
-    //List<VoteComment> votes;
+    @OneToMany(targetEntity = VoteComment.class, cascade = CascadeType.ALL)
+    @JoinColumn(name="comment_id", referencedColumnName = "id")
+    private List<VoteComment> votes;
 }
