@@ -44,7 +44,6 @@ public class VoteCommentService {
         List<VoteComment> votes = voteCommentRepository.findAll();
         for(VoteComment v : votes){
             if(v.getComment_id() == vote.getComment_id() && v.getVoter_id() == vote.getVoter_id()) {
-                System.out.println("Found to update");
                 vote.setVote_id(v.getVote_id());
                 voteCommentRepository.save(vote);
             }
