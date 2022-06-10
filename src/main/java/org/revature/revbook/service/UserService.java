@@ -3,7 +3,6 @@ package org.revature.revbook.service;
 import org.revature.revbook.data.UserRepository;
 import org.revature.revbook.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +18,15 @@ public class UserService {
     public User addUser(User user) {
 
         userRepository.save(user);
+        return user;
+    }
+
+    public User authenticate(String username, String password){
+        User user = userRepository.getByUsernameAndPassword(username, password).orElse(null);
+
+//        if(user == null || user.isBanned()){
+//            user = null;
+//        }
         return user;
     }
 
@@ -55,7 +63,7 @@ public class UserService {
     // This is the overridden method from the UserDetailsService that is used to retrieve the
     //  User object from the database by querying with the supplied username:
 
-    public User loadUserByUsername(String username) throws UsernameNotFoundException {
+    public User loadUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 

@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { User } from 'app/entity/user';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +12,11 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   model: any = {};
-  sessionId: any = "";
-  model2: any = {};
+  // sessionId: any = "";
+  // model2: any = {};
+  user!:User;
+  username!:string;
+  password!:string;
 
   constructor(
     private router: Router,
@@ -22,30 +26,44 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleService.setTitle('Login');
+    this.user = {
+      username: "",
+      password: ""
+    }
   }
 
+  
+  
+
   loginHtml() {
-    let url = 'api/login';
+    let url = 'user/login';
+    let username = this.model.username;
+    let password = this.model.password;
+    // url +="?username=" + username + "&password=" + password;
     // sends request through proxy for authentication
-    this.http.post<any>(url, {
-      username: this.model.username,
-      password: this.model.password
-    }).subscribe(res => {
+    const params = new HttpParams()
+  .set("username",username)
+  .set("password",password);
+    // this.http.post<any>(url, {
+    //   username: this.model.username,
+    //   password: this.model.password
+    // })
+    this.http.get('http://localhost:8080/api/user/login',{params})
+    .subscribe(res => {
       // gets authentication info from http response for angular usage
         if (res) {
-        let session = res;
-        this.sessionId = session.session_id;
-        this.model2 = session.sessionUser;
+        let user = res;
+        // this.model2 = session.sessionUser;
 
         // refer to each login session by 'token'
-        sessionStorage.setItem(
-          'token',
-          this.sessionId
-        );
+        // sessionStorage.setItem(
+        //   'token',
+        //   this.sessionId
+        // );
 
-        localStorage.setItem('userId', this.model2.userId);
-        localStorage.setItem('user-username', this.model2.username);
-        localStorage.setItem('user-password', this.model2.password);
+        // localStorage.setItem('userId', this.model2.userId);
+        // localStorage.setItem('user-username', this.model2.username);
+        // localStorage.setItem('user-password', this.model2.password);
 
          // For later implementation of roles
         // localStorage.setItem('user-role', this.model2.role.role_name);
@@ -68,7 +86,7 @@ export class LoginComponent implements OnInit {
         );
         this.router.navigate(['']);
       } else {
-        alert("Authentication failed.");
+        alert("Login failed.");
       }
    }, err => {
       if (err) {

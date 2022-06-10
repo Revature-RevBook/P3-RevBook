@@ -5,9 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -19,7 +17,7 @@ import java.util.List;
 @Entity
 @ToString
 @Table(name = "users")
-public class User implements UserDetails {
+public class User {
 
     // Data members for the User object:
     @Id
@@ -39,36 +37,36 @@ public class User implements UserDetails {
 
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    // IsAccountNonExpired method
-    // This method will return if the user account is expired:
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    // IsAccountNonLocked method
-    // This method will return if the user account is locked:
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    // IsCredentialsNonExpired method
-    // This method will return if the user account's credentials are expired:
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    // IsEnabled method
-    // This method will return if the user account is enabled or not:
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return null;
+//    }
+//
+//    // IsAccountNonExpired method
+//    // This method will return if the user account is expired:
+//    @Override
+//    public boolean isAccountNonExpired() {
+//        return true;
+//    }
+//
+//    // IsAccountNonLocked method
+//    // This method will return if the user account is locked:
+//    @Override
+//    public boolean isAccountNonLocked() {
+//        return true;
+//    }
+//
+//    // IsCredentialsNonExpired method
+//    // This method will return if the user account's credentials are expired:
+//    @Override
+//    public boolean isCredentialsNonExpired() {
+//        return true;
+//    }
+//
+//    // IsEnabled method
+//    // This method will return if the user account is enabled or not:
+//    @Override
+//    public boolean isEnabled() {
+//        return true;
+//    }
 }

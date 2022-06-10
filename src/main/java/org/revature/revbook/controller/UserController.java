@@ -23,6 +23,11 @@ public class UserController {
         userService.addUser(user);
     }
 
+    @GetMapping("/login")
+    public User login(@RequestParam String username, @RequestParam String password){
+        return userService.authenticate(username, password);
+    }
+
     // GetMapping to retrieve User objects from the database:
     @GetMapping("listusers")
     public List<User> getAllUsers() {
