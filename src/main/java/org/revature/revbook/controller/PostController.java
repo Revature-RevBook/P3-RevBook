@@ -2,6 +2,7 @@ package org.revature.revbook.controller;
 
 
 import org.revature.revbook.entity.Post;
+import org.revature.revbook.entity.VotePost;
 import org.revature.revbook.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,9 @@ public class PostController {
 
     @GetMapping
     public List<Post> read_all_post() {return postService.read_all_post();}
+
+    @GetMapping("/votes/{id}")
+    public List<VotePost> get_all_votePosts_by_post_id(@PathVariable long id) {return postService.getAllVotes(id);}
 
     @PutMapping
     public Post update_post(@RequestBody Post post) {return postService.update_post(post);}

@@ -1,1 +1,5 @@
-<p>vote-post works!</p>
+<body>
+    <input type="button" name="upvote" (click)="incrementVotePost()">
+    <label>Votes: {{votePost.vote}}</label>
+    <input type="button" name="downvote" (click)="decrementVotePost()">
+</body>
