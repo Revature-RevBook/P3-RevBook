@@ -29,5 +29,7 @@ public class VotePostService {
         return votePostRepository.findByPostAndUser(post_id, user_id);
     }
 
-
+    public void deleteVotePost(long id){
+        votePostRepository.deleteById(id);
+    }
 }
