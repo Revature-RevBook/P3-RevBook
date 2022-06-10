@@ -67,11 +67,16 @@ export class CommentsComponent implements OnInit, OnChanges{
   }
 
   receiveReplyComment($event, i) {
+    //$event  = reply
     this.reply = $event;
     console.log($event);
+    //go to each of the comments
     this.postComment.forEach((element) => {
+      //if the id defiend in the parameters matches
       if (element['commentId'] === i) {
+        //add reply to the list of 'replies'
         element['replyComment'].push(...$event);
+        //log in console to confirm it worked
         console.log('Main array after reply comment=>', this.postComment);
       }
     });
