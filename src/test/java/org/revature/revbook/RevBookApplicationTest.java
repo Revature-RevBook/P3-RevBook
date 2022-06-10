@@ -4,6 +4,7 @@ package org.revature.revbook;
 import org.junit.jupiter.api.*;
 import org.revature.revbook.data.*;
 import org.revature.revbook.entity.Message;
+import org.revature.revbook.entity.User;
 import org.revature.revbook.service.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,41 +15,41 @@ import org.springframework.boot.test.context.SpringBootTest;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class RevBookApplicationTest
 {
-    @Autowired
-    CommentService commentService;
+//    @Autowired
+//    CommentService commentService;
+//
+//    @Autowired
+//    MessageService messageService;
 
-    @Autowired
-    MessageService messageService;
-
-    @Autowired
-    PostService postService;
+//    @Autowired
+//    PostService postService;
 
     @Autowired
     UserService userService;
 
-    @Autowired
-    VoteCommentService voteCommentService;
-
-    @Autowired
-    VotePostService votePostService;
-
-    @Autowired
-    CommentRepository commentRepository;
-
-    @Autowired
-    MessageRepository messageRepository;
-
-    @Autowired
-    PostRepository postRepository;
-
-    @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    VoteCommentRepository voteCommentRepository;
-
-    @Autowired
-    VotePostRepository votePostRepository;
+//    @Autowired
+//    VoteCommentService voteCommentService;
+//
+//    @Autowired
+//    VotePostService votePostService;
+//
+//    @Autowired
+//    CommentRepository commentRepository;
+//
+//    @Autowired
+//    MessageRepository messageRepository;
+//
+////    @Autowired
+////    PostRepository postRepository;
+//
+//    @Autowired
+//    UserRepository userRepository;
+//
+//    @Autowired
+//    VoteCommentRepository voteCommentRepository;
+//
+//    @Autowired
+//    VotePostRepository votePostRepository;
 
 
     //============================================================================================================
@@ -104,9 +105,9 @@ public class RevBookApplicationTest
     @Test
     @Order(1)
     void testAddUser(){
-
-
-
+        User user = new User("test_name","123@gmail.com", "test_password");
+        User result = userService.register(user);
+        Assertions.assertEquals(1L, result.getUser_id());
     }
 
     @Test
@@ -146,7 +147,31 @@ public class RevBookApplicationTest
     @Test
     @Order(2)
     void testGetUser(){
-
+        User user = new User("test_name","123@gmail.com", "test_password");
+        userService.register(user);
+        try {
+            User result = userService.getUser(1L);
+            Assertions.assertEquals("test_name", result.getUser_name());
+            Assertions.assertEquals("123@gmail.com", result.getUser_email());
+            Assertions.assertEquals("test_password", result.getPassword());
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+    @Test
+    void testGetUserElseCondition() {
+        try {
+            User result = userService.getUser(100L);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+    @Test
+    void testUserIsUnique() {
+        User user = new User("test_name","123@gmail.com", "test_password");
+        userService.register(user);
+        boolean result = userService.isUnique(user);
+        Assertions.assertEquals(false, result);
     }
 
     @Test

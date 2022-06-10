@@ -50,7 +50,11 @@ public class User {
         this.user_name = user_name;
         this.user_email = user_email;
     }
-
+    public User(String user_name, String user_email, String password) {
+        this.user_name = user_name;
+        this.user_email = user_email;
+        this.password = password;
+    }
     // Constructor without ID:
 
 }
