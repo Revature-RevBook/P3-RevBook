@@ -1,6 +1,5 @@
 package org.revature.revbook;
 
-
 import org.junit.jupiter.api.*;
 import org.revature.revbook.data.*;
 import org.revature.revbook.entity.Message;
