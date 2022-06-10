@@ -1,7 +1,9 @@
 package org.revature.revbook.service;
 
 import org.revature.revbook.data.PostRepository;
+import org.revature.revbook.data.VotePostRepository;
 import org.revature.revbook.entity.Post;
+import org.revature.revbook.entity.VotePost;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import java.util.List;
 public class PostService {
     @Autowired
     PostRepository postRepository;
+    @Autowired
+    VotePostRepository votePostRepository;
 
     public Post create_post(Post post){return postRepository.save(post);}
 
@@ -30,4 +34,14 @@ public class PostService {
     }
 
     public void delete_post(Long id){postRepository.deleteById(id);}
+
+    public void voted(VotePost vote){
+        Post postDB = postRepository.findById(vote.getPost_id()).get();
+        postDB.getVotes().add(vote);
+        postRepository.save(postDB);
+    }
+
+    public List<VotePost> getAllVotes(Long post_id) {
+        return votePostRepository.findByPostIdIs(post_id);
+    }
 }

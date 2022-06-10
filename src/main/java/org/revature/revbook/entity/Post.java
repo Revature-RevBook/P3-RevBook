@@ -32,9 +32,10 @@ public class Post {
     @OneToMany(targetEntity = post_images.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "post_id", referencedColumnName = "post_id")
     private List<String> post_img;
-//    @ManyToMany(targetEntity = User.class, cascade = CascadeType.ALL)
-//    @JoinColumn()
-//    private List<User> likes;
+
+    @OneToMany(targetEntity = VotePost.class, cascade = CascadeType.ALL)
+    @JoinColumn(name="post_id", referencedColumnName = "post_id")
+    private List<VotePost> votes;
 
     public Post(String post_title, String post_content) {
         this.post_title = post_title;
