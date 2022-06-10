@@ -15,16 +15,28 @@ body {
     font-size: 13px;
   }
 
-  a.tab-login{
+  [aria-selected="true"]{
     font-family: 'Custom', Fallback, sans-serif !important;
     border-radius: 25px;
     padding: 10px;
-    border: 3px solid #fff;
-    text-align: center;
-    background-color: #fff;
+    color:#000000;
+    background-color: #FCB414;
     font-size: 13px;
   }
 
+  [aria-selected="false"]{
+    font-family: 'Custom', Fallback, sans-serif !important;
+    border-radius: 25px;
+    padding: 10px;
+    color:#000000;
+    font-size: 13px;
+  }
+
+
+  [aria-selected="false"]:hover{
+    background-color:#72A4C2;
+    color:#fff;
+  }
   button {
     font-family: 'Custom', Fallback, sans-serif !important;
     border-radius: 25px;
