@@ -3,6 +3,7 @@ package org.revature.revbook;
 
 import org.junit.jupiter.api.*;
 import org.revature.revbook.data.*;
+import org.revature.revbook.entity.Comment;
 import org.revature.revbook.entity.Message;
 import org.revature.revbook.entity.Post;
 import org.revature.revbook.entity.User;
@@ -25,11 +26,11 @@ import java.util.List;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class RevBookApplicationTest
 {
-//    @Autowired
-//    CommentService commentService;
-//
-//    @Autowired
-//    MessageService messageService;
+    @Autowired
+    CommentService commentService;
+
+    @Autowired
+    MessageService messageService;
 
     @Autowired
     PostService postService;
@@ -68,14 +69,27 @@ public class RevBookApplicationTest
     @Test
     @Order(5)
     void testAddComment(){
-
-
+        Date date = new Date();
+        Timestamp ts = new Timestamp(date.getTime());
+        Comment comment = new Comment(ts, ts, "add comment", 1L, 1L);
+        Comment result = commentService.addComment(comment);
+        Assertions.assertEquals("add comment", result.getCommentContent());
+        Assertions.assertEquals(ts, result.getUpdatedAt());
+        Assertions.assertEquals(1L, result.getCommenterId());
+        Assertions.assertEquals(1L, result.getCommentId());
     }
 
     @Test
     @Order(9)
     void testAddMessage(){
-
+        Date date = new Date();
+        Timestamp ts = new Timestamp(date.getTime());
+        Message message = new Message(ts, ts, "test message", 1L, 2L);
+        Message result = messageService.addMessage(message);
+        Assertions.assertEquals(ts, result.getUpdatedAt());
+        Assertions.assertEquals("test message", result.getMessageContent());
+        Assertions.assertEquals(1L, result.getSenderId());
+        Assertions.assertEquals(2L, result.getRecipientId());
     }
 
     @Test
@@ -124,13 +138,70 @@ public class RevBookApplicationTest
     @Test
     @Order(6)
     void testGetComment(){
+        Date date = new Date();
+        Timestamp ts = new Timestamp(date.getTime());
+        Comment comment = new Comment(ts, ts, "add comment", 1L, 1L);
+        commentService.addComment(comment);
 
+        Comment result = commentService.getCommentById(1L);
+        Assertions.assertEquals("add comment", result.getCommentContent());
+        Assertions.assertEquals(1L, result.getCommenterId());
+        Assertions.assertEquals(1L, result.getCommentId());
     }
 
     @Test
+    void testGetAllComments() {
+        Date date = new Date();
+        Timestamp ts = new Timestamp(date.getTime());
+        Comment comment = new Comment(ts, ts, "add comment", 1L, 1L);
+        commentService.addComment(comment);
+
+        List<Comment> comments = commentService.getAllComments();
+        Assertions.assertEquals("add comment", comments.get(0).getCommentContent());
+        Assertions.assertEquals(1, comments.size());
+    }
+    @Test
+    void testGetAllCommentsByPostIdTest() {
+        Date date = new Date();
+        Timestamp ts = new Timestamp(date.getTime());
+        Comment comment1 = new Comment(ts, ts, "add comment", 1L, 1L);
+        commentService.addComment(comment1);
+
+        Comment comment2 = new Comment(ts, ts, "comment from userId=2", 2L, 1L);
+        commentService.addComment(comment2);
+        List<Comment> commentsById = commentService.getAllCommentsByPostId(1L);
+        Assertions.assertEquals("add comment", commentsById.get(0).getCommentContent());
+        Assertions.assertEquals("comment from userId=2", commentsById.get(1).getCommentContent());
+    }
+    @Test
     @Order(10)
     void testGetMessage(){
+        Date date = new Date();
+        Timestamp ts = new Timestamp(date.getTime());
+        Message message = new Message(ts, ts, "test message", 1L, 2L);
+        messageService.addMessage(message);
+        Message result = messageService.getMessageById(1L);
+        Assertions.assertEquals("test message", result.getMessageContent());
+    }
+    @Test
+    void testAllMessagesTest() {
+        Date date = new Date();
+        Timestamp ts = new Timestamp(date.getTime());
+        Message message = new Message(ts, ts, "test message", 1L, 2L);
+        Message result = messageService.addMessage(message);
 
+        List<Message> messages = messageService.getAllMessages();
+        Assertions.assertEquals(1, messages.size());
+    }
+    @Test
+    void testAllMessagesByRecipientIdTest() {
+        Date date = new Date();
+        Timestamp ts = new Timestamp(date.getTime());
+        Message message = new Message(ts, ts, "test message", 1L, 2L);
+        Message result = messageService.addMessage(message);
+
+        List<Message> messages = messageService.getAllMessagesByRecipientId(2L);
+        Assertions.assertEquals("test message", messages.get(0).getMessageContent());
     }
 
     @Test
@@ -278,13 +349,31 @@ public class RevBookApplicationTest
     @Test
     @Order(7)
     void testUpdateComment(){
+        Date date = new Date();
+        Timestamp ts = new Timestamp(date.getTime());
+        Comment comment1 = new Comment(ts, ts, "add comment", 1L, 1L);
+        commentService.addComment(comment1);
 
+        Comment comment2 = new Comment(ts, ts, "update comment", 2L, 1L);
+        commentService.updateComment(comment2, 1L);
+
+        Comment result = commentService.getCommentById(1L);
+        Assertions.assertEquals("update comment", result.getCommentContent());
+        Assertions.assertEquals(1L, result.getCommenterId());
+        Assertions.assertEquals(1L, result.getCommentId());
     }
 
     @Test
     @Order(11)
     void testUpdateMessage(){
+        Date date = new Date();
+        Timestamp ts = new Timestamp(date.getTime());
+        Message message = new Message(ts, ts, "test message", 1L, 2L);
+        messageService.addMessage(message);
 
+        Message message2 = new Message(ts, ts, "updated message", 1L, 2L);
+        Message result = messageService.updateMessage(message2, 1L);
+        Assertions.assertEquals("updated message", result.getMessageContent());
     }
 
     @Test
@@ -359,7 +448,7 @@ public class RevBookApplicationTest
     @Test
     @Order(12)
     void testDeleteMessage(){
-
+        messageService.deleteMessage(1)
     }
 
     @Test
