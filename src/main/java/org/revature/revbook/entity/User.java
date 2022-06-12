@@ -45,6 +45,7 @@ public class User implements UserDetails {
         this.profileImgLink = profileImgLink;
     }
 
+
     // UserDetails methods
     //=====================
 
