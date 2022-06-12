@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed Page</title>
+</head>
+<body>
+    <app-navbar></app-navbar>
+    <h1>Create Post:</h1>
+    <form class="card" name="form" style="background-color: #72A4C2;" (ngSubmit)="submitPost()" #f="ngForm" ngNativeValidate>
+        <div>
+            <label for="inputStyle" class="col-sm-2 col-form-label">Title:</label>
+            <br/>
+            <input type="text" id = "inputStyle" class="form-control" name="postTitle" [(ngModel)]="post.postTitle" #postTitle="ngModel" required/>
+        </div>
+        <div>
+            Content:
+            <br/>
+            <input type="text" class="form-control" name="postContent" [(ngModel)]="post.postContent" #postContent="ngModel" required/>
+        </div>
+        <div>
+            Image:
+            <br/>
+            <input id="imageInput" type="file" accept="image/*">
+        </div>
+        <br/>
+        <div>
+            <button type="submit" class="btn btn-warning" style="background-color: #FCB414;" (focus)="posts.refreshPosts()">Submit</button>
+        </div>
+    </form>
+    <br/><br/>
+    <app-post-feed-table #posts></app-post-feed-table>
+</body>
+</html>

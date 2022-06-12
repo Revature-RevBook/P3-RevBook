@@ -1,0 +1,19 @@
+body {
+    margin        : 0;
+    padding       : 0;
+    display       : grid;
+    place-content : center;
+    min-height    : 100vh;
+ }
+
+ #errorMsg {
+     color: red;
+ }
+
+ .card {
+    color: white;
+ }
+
+ .txtInput {
+    text-align: center;
+ }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="card" style="background-color: #474C55;">
+        <h1>Please provide login credentials:</h1>
+        <div id="errorMsg"></div>
+        <form id="signIn" name="form" (ngSubmit)="login()" #f="ngForm" ngNativeValidate>
+            <div class="txtInput">
+                Username:
+                <br/>
+                <input type="text" name="username" [(ngModel)]="model.username" #username="ngModel" required/>
+            </div>
+            <div class="txtInput">
+                Password:
+                <br/>
+                <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required/>
+            </div>
+            <br/>
+            <div class="txtInput">
+                <button class="btn btn-warning" style="background-color: #F26925; color: white;">Login</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

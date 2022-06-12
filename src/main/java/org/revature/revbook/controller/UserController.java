@@ -3,54 +3,50 @@ package org.revature.revbook.controller;
 import org.revature.revbook.entity.User;
 import org.revature.revbook.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import java.util.Collections;
-import java.util.Map;
+import java.util.List;
 
+// UserController Class
+// This class will handle the HTTP Requests for the API/resource paths associated with the User objects.
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping ("api/v1/user")
-@CrossOrigin(origins = "http://localhost:4200/")
+@RequestMapping(path = "/users")
 public class UserController {
 
     @Autowired
     UserService userService;
 
-    @RequestMapping(path = "{userId}", method = RequestMethod.GET)
-    public User getUser(@Valid @PathVariable("userId") Long userId) {
-        try {
-            return userService.getUser(userId);
-        } catch (Exception e) {
-            ResponseEntity.badRequest();
-            throw new RuntimeException(e);
-        }
+    // PostMapping to add a User to the database:
+    @PostMapping("")
+    public Boolean addUser(@RequestBody User user) {
+        userService.addUser(user);
+        return true;
     }
 
-    @GetMapping("/login")
-    public User login(@RequestParam String username, @RequestParam String password){
-        return userService.authenticate(username, password);
+    // GetMapping to retrieve User objects from the database:
+    @GetMapping("")
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
     }
 
-
-    @RequestMapping(path = "", method = RequestMethod.POST)
-    public User register(@Valid @RequestBody User user) {
-        return  userService.register(user);
+    // GetMapping to retrieve a specific User object from the database:
+    @GetMapping("/{userId}")
+    public User getUserById(@PathVariable("userId") Long userId) {
+        return userService.getById(userId);
     }
 
-    @RequestMapping(path = "/unique", method = RequestMethod.GET)
-    public Map<String, Boolean> isUnique(@RequestParam(name = "userName") String userName,
-                                         @RequestParam(name = "userEmail") String userEmail) {
-        User user = new User(userName, userEmail);
-        Boolean isUnique = userService.isUnique(user);
-        if (isUnique) {
-            System.out.println("here");
-            return Collections.singletonMap("isUnique" , isUnique);
-        }
-        System.out.println("here");
-        return Collections.singletonMap("isUnique" , false);
+    // PutMapping to update a specified User with the supplied JSON User object in the database:
+    @PutMapping("/{userId}")
+    public boolean updateUser(@PathVariable("userId") Long userId, @RequestBody User user) {
+        userService.updateUser(user, userId);
+        return true;
     }
 
-
+    // DeleteMapping to delete a specified user from the database:
+    @DeleteMapping("/{userId}")
+    public boolean deleteUser(@PathVariable("userId") Long userId) {
+        userService.deleteUser(userId);
+        return true;
+    }
 }

@@ -1,0 +1,30 @@
+<div class="card">
+    <table class="table">
+        <thead>
+            <th scope="col">Id</th>
+            <th scope="col">Sender</th>
+            <th scope="col">Message</th>
+            <th scope="col"></th>
+        </thead>
+        <tbody>
+            <tr scope="row" class = "message" *ngFor="let message of messages">
+                <td>{{message.messageId}}</td>
+                <td>{{message.senderId}}</td>
+                <td>{{message.messageContent}}</td>
+                <td><button class="btn btn-warning" style="background-color: #F26925; color: white;" (click)="selectMessage(message.messageId, message.senderId)">Respond</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<section id="respond_section"></section>
+<div id="respondToMsg">
+    <hr>
+    <div id="responseDiv" class="card">
+        <h5 id="responseHeader">Respond to Message </h5>
+        <form class="answer" (ngSubmit)="sendMessage()" #f="ngForm" ngNativeValidate>
+            <textarea id="response" class="answerbox" name="answerbox" [(ngModel)]="message.messageContent" cols="50" rows="2"></textarea>
+            <br>
+            <button class="btn btn-warning" style="background-color: #F26925; color: white;">Send</button>
+        </form>
+    </div>
+</div>

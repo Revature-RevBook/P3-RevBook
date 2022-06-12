@@ -1,39 +1,55 @@
 package org.revature.revbook.controller;
 
-import java.util.List;
-
 import org.revature.revbook.entity.Comment;
 import org.revature.revbook.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+// CommentController Class
+// This class will handle the HTTP Requests for the API/resource paths associated with the User objects.
+@CrossOrigin(origins = "*")
 @RestController
-@CrossOrigin(origins="*")
-@RequestMapping("/comment")
+@RequestMapping(path = "/comments")
 public class CommentController {
 
     @Autowired
     CommentService commentService;
 
-    @GetMapping
-    public List<Comment> getAll(){
-        return commentService.get_all_comments();
+    // PostMapping to add a Comment to the database:
+    @PostMapping("")
+    public Comment addComment(@RequestBody Comment comment) {
+        return commentService.addComment(comment);
     }
 
-    @GetMapping("/{id}")
-    public List<Comment> getFromPost(@PathVariable("id")Long id){
-        return commentService.get_comments(id);
+    // GetMapping to retrieve a specific Comment object from the database:
+    @GetMapping("/{commentId}")
+    public Comment getCommentById(@PathVariable("commentId") Long commentId) {
+        return commentService.getCommentById(commentId);
     }
 
-    @PostMapping
-    public Comment post(@RequestBody Comment comment){
-        System.out.println("Posting comment");
-        return commentService.postComment(comment);
+    // GetMapping to retrieve Comment objects for a specified Post from the database:
+    @GetMapping("/post/{postId}")
+    public List<Comment> getAllCommentsByPostId(@PathVariable("postId") Long postId) {
+        return commentService.getAllCommentsByPostId(postId);
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id")Long id){
-        commentService.delete_comment(id);
+    // GetMapping to retrieve Comment objects from the database:
+    @GetMapping("")
+    public List<Comment> getAllComments() {
+        return commentService.getAllComments();
     }
-    
+
+    // PutMapping to update a specified Comment record with the supplied JSON Comment object in the database:
+    @PutMapping("/{commentId}")
+    public Comment updateComment(@PathVariable("commentId") Long commentId, @RequestBody Comment comment) {
+        return commentService.updateComment(comment, commentId);
+    }
+
+    // DeleteMapping to delete a specified Comment record from the database:
+    @DeleteMapping("/{commentId}")
+    public void deleteComment(@PathVariable("commentId") Long commentId) {
+        commentService.deleteComment(commentId);
+    }
 }

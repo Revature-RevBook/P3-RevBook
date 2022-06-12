@@ -1,0 +1,25 @@
+<div>
+    <table class="table">
+        <tbody>
+            <tr scope="row" class = "card border-dark mb-3" *ngFor="let comment of comments">
+                <td>
+                    CommentId: {{comment.commentId}}
+                    <br/>
+                    CommenterId: {{comment.commenterId}}
+                    <br/>
+                    Created At: {{comment.createdAt}}
+                    <br/>
+                    <div *ngIf="comment.updatedAt != null">
+                        Updated At: {{comment.updatedAt}}
+                    </div>
+                    <br/><br/>
+                    {{comment.commentContent}}
+                    <br/><br/>
+                    <div>
+                        <app-vote-comment [commentId] = "comment.commentId"></app-vote-comment>
+                    </div>                  
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

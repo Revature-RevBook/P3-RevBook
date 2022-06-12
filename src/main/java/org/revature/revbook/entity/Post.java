@@ -4,26 +4,37 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.w3c.dom.Text;
 
-import javax.persistence.Entity;
 import javax.persistence.*;
-import javax.persistence.Id;
 import java.sql.Timestamp;
 
+// Lombok annotations
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 @Entity
 @ToString
 public class Post {
+
+    // Data members for the Post object:
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long post_id;
-    private String post_title;
-    private Timestamp created_at;
-    private Timestamp updated_at;
-    private Text post_content;
-    //Todo ask about storage of an image
-    private String post_img;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long postId;
+    private String postTitle;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
+    private String postContent;
+    private Long postImgId;
+    @Column(nullable = false)
+    private Long userId;
+
+    // Constructor without ID:
+    public Post(String postTitle, Timestamp createdAt, Timestamp updatedAt, String postContent, Long userId) {
+        this.postTitle = postTitle;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.postContent = postContent;
+        this.userId = userId;
+
+    }
 }
