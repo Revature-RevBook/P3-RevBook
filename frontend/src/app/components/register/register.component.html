@@ -11,7 +11,7 @@
           </div>
           <div class="row align-items-center">
             <div class="col mt-4">
-              <input type="text" class="form-control" placeholder="user name" [(ngModel)]="user.user_name">
+              <input type="text" id="user_name" class="form-control" placeholder="user name" [(ngModel)]="user.user_name">
             </div>
             <span *ngIf="hasUserNameError"  style="color: red">
               Please enter user Name
@@ -19,7 +19,7 @@
           </div>
           <div class="row align-items-center mt-4">
             <div class="col">
-              <input type="email" class="form-control" placeholder="email" [(ngModel)]="user.user_email">
+              <input type="email" id="email" class="form-control" placeholder="email" [(ngModel)]="user.user_email">
             </div>
             <span *ngIf="hasEmailError" style="color: red">
               Please enter email address
@@ -27,7 +27,7 @@
           </div>
           <div class="row align-items-center mt-4">
             <div class="col">
-              <input type="password" class="form-control" placeholder="password"  [(ngModel)]="user.password">
+              <input type="password" id = "password" class="form-control" placeholder="password"  [(ngModel)]="user.password">
             </div>
             <!-- <div class="col">
               <input type="password" class="form-control" placeholder="Confirm Password">

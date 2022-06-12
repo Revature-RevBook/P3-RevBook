@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 @SpringBootTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 // Use the @TestMethodOrder annotation to set the test order to be ordered numerically:
@@ -131,7 +134,7 @@ public class RevBookApplicationTest
     @Test
     @Order(6)
     void testGetComment(){
-
+        // do something here
     }
 
     @Test
@@ -149,16 +152,27 @@ public class RevBookApplicationTest
     @Test
     @Order(2)
     void testGetUser(){
-        User user = new User("test_name","123@gmail.com", "test_password");
+        Date date = new Date();
+        Timestamp ts=new Timestamp(date.getTime());
+//        Date date2 = new Date();
+//        Timestamp ts2=new Timestamp("2022-06-10'T'15:12:31.421");
+        System.out.println(ts);
+
+        User user = new User("test_name","123@gmail.com", "test_password", ts, ts);
         userService.register(user);
+        User user1 = new User("test_name1","1234@gmail.com");
+        User user2 = new User(2L, "test2", "testemail@gmail.com", "54321", ts, ts, "jflksjifdjf.com");
         try {
             User result = userService.getUser(1L);
+            Assertions.assertNotEquals(ts,result.getCreated_at());
+            Assertions.assertNotEquals(ts,result.getUpdated_at());
             Assertions.assertEquals("test_name", result.getUser_name());
             Assertions.assertEquals("123@gmail.com", result.getUser_email());
             Assertions.assertEquals("test_password", result.getPassword());
         } catch (Exception e) {
             System.err.println(e);
         }
+
     }
     @Test
     void testGetUserElseCondition() {
