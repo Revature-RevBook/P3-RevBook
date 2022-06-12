@@ -1,0 +1,12 @@
+#respondToMsg {
+    display: none;
+}
+
+.card {
+    margin: 0 10% 0 10%;
+    padding: 0.5%;
+}
+
+#responseDiv {
+    text-align: center;
+}

@@ -1,43 +1,42 @@
 package org.revature.revbook.entity;
 
-import javax.persistence.Entity;
-
-import java.sql.Timestamp;
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.hibernate.annotations.CreationTimestamp;
 
+import javax.persistence.*;
+import java.sql.Timestamp;
+
+// Lombok annotations
 @Data
-@ToString
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "comments")
+@ToString
 public class Comment {
+
+    // Data members for the Comment object:
     @Id
-    @GeneratedValue
-    private Long id;
-    private String commentTxt;
-    @Column(name = "creation_date")
-    @CreationTimestamp
-    private Timestamp currentDate;
-    @Column(name="parent_id")
-    private Long parentId;
-    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
-    @JoinColumn(name="parent_id")
-    List<Comment> replyComment;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long commentId;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
+    private String commentContent;
+    @Column(nullable = false)
+    private Long commenterId;
+    @Column(nullable = false)
     private Long postId;
-    private Long userId;
 
-    @OneToMany(targetEntity = VoteComment.class, cascade = CascadeType.ALL)
-    @JoinColumn(name="comment_id", referencedColumnName = "id")
-    private List<VoteComment> votes;
+
+    // Constructor without ID:
+    public Comment(Timestamp createdAt, Timestamp updatedAt, String commentContent, Long commenterId, Long postId) {
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.commentContent = commentContent;
+        this.commenterId = commenterId;
+        this.postId = postId;
+    }
+
 }

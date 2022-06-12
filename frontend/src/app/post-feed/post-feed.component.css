@@ -1,0 +1,17 @@
+body {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.card {
+    margin: 0 15% 0 15%;
+    padding: 1% 1% 1% 1%;
+}
+
+footer {
+    text-align: center;
+    padding-bottom: 2%;
+}

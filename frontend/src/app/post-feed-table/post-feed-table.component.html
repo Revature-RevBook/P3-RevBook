@@ -1,0 +1,35 @@
+<div>
+    <table class="table">
+        <tbody>
+            <tr scope="row" id="post" class="card border-info mb-3" *ngFor="let post of posts">
+                <td>
+                    PostId: {{post.postId}}
+                    <br/>
+                    UserId: {{post.userId}}
+                    <br/>
+                    Title: {{post.postTitle}}
+                    <br/>
+                    Created At: {{post.createdAt}}
+                    <br/>
+                    <div *ngIf="post.updatedAt != null">
+                        Updated At: {{post.updatedAt}}
+                    </div>
+                    <br/><br/>
+                    {{post.postContent}}
+                    <div *ngIf="post.postImgId != null">
+                        <br/><br/>
+                        <img src="http://localhost:8080/post-images/{{post.postId}}/image/download" alt="Post Image">
+                    </div>
+                    <br/><br/>
+                    <div>
+                        <app-vote-post [postId] = "post.postId"></app-vote-post>
+                    </div>
+                    <br/><br/>
+                    <div>
+                        <app-comment [postId] = "post.postId"></app-comment>
+                    </div>                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

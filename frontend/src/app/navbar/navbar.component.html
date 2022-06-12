@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #474C55;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color: #FCB414;">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" style="color: white;" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: white;" href="/account">Account</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: white;" href="/feed">Feed</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: white;" href="/messages">Messages</a>
+            </li>
+        </ul>
+        <div id="logout">
+            <form id="navButtons" class="form-inline my-2 my-lg-0">
+                <button class="btn btn-warning my-2 my-sm-0" style="background-color:  #F26925; color: white;" type="submit" (click) = "logout()">Logout</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<router-outlet id="userpages"></router-outlet>

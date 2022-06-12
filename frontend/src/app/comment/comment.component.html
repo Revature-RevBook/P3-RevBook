@@ -1,0 +1,11 @@
+<div>
+    <form id="form1"  class="card border-secondary mb-3" name="form" (ngSubmit)="submitComment()" #f="ngForm" ngNativeValidate>
+        <h5>Comment:</h5>
+        <input type="text" class="form-control" name="postComment" [(ngModel)]="comment.commentContent" #postContent="ngModel" required/>
+        <br/><br/>
+        <button type="submit" class="btn btn-dark btm-sm" style="background-color: #474C55; color: white;" (focus)="comments.refreshComments()">Submit</button>
+    </form>
+    <br/><br/>
+    <h5>Comments</h5>
+    <app-comment-table #comments [postId]="postId"></app-comment-table>
+</div>
