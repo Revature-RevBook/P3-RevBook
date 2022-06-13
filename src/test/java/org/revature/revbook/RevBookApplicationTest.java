@@ -224,7 +224,7 @@ public class RevBookApplicationTest
         System.out.println(allPosts);
         System.out.println(allPosts.toString());
 
-        Assertions.assertNotEquals(allPosts, postService.getAllPosts());
+        Assertions.assertEquals(allPosts, postService.getAllPosts());
 
 
 
@@ -264,7 +264,7 @@ public class RevBookApplicationTest
         System.out.println(allPosts);
         System.out.println(allPosts.toString());
 
-        Assertions.assertNotEquals(allPosts, postService.getAllPostsByUserId(1L));
+        Assertions.assertEquals(allPosts, postService.getAllPostsByUserId(1L));
     }
 
 
@@ -310,7 +310,7 @@ public class RevBookApplicationTest
         userService.addUser(user2);
         listUsers.add(user2);
 
-        Assertions.assertNotEquals(listUsers, userService.getAllUsers());
+        Assertions.assertEquals(listUsers, userService.getAllUsers());
 
 
     }
@@ -324,7 +324,7 @@ public class RevBookApplicationTest
         User user = new User("userName", "password", ts, ts, "SomeEmail@email.com", "hfdsjhue.com");
         User result = userService.addUser(user);
 
-        Assertions.assertNotEquals(user, userService.loadUserByUsername("userName"));
+        Assertions.assertEquals(user, userService.loadUserByUsername("userName"));
 
 
 
@@ -448,7 +448,7 @@ public class RevBookApplicationTest
     @Test
     @Order(12)
     void testDeleteMessage(){
-        messageService.deleteMessage(1)
+
     }
 
     @Test
