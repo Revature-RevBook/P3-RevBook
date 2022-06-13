@@ -4,7 +4,7 @@ package org.revature.revbook;
 import org.junit.jupiter.api.*;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+// @SpringBootTest
 // Use the @TestMethodOrder annotation to set the test order to be ordered numerically:
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class RevBookApplicationTest
