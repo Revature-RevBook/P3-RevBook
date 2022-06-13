@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    let url = 'http://localhost:8080/login';
+    let url = 'http://revbook-env.eba-mj2xqwak.us-east-1.elasticbeanstalk.com/login';
     this.http.post<any>(url, {
       username: this.model.username,
       password: this.model.password

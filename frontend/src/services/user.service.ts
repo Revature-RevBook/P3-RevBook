@@ -10,22 +10,22 @@ export class UserService {
   constructor(private http:HttpClient) { }
 
   addUser(user:Partial<User>) {
-    return this.http.post<User>('http://localhost:8080/users', user);
+    return this.http.post<User>('http://revbook-env.eba-mj2xqwak.us-east-1.elasticbeanstalk.com/users', user);
   }
 
   getAllUsers() {
-    return this.http.get<User[]>('http://localhost:8080/users');
+    return this.http.get<User[]>('http://revbook-env.eba-mj2xqwak.us-east-1.elasticbeanstalk.com/users');
   }
 
   getUserById(userId:Number) {
-    return this.http.get<User>(`http://localhost:8080/users/${userId}`);
+    return this.http.get<User>(`http://revbook-env.eba-mj2xqwak.us-east-1.elasticbeanstalk.com/users/${userId}`);
   }
 
   updateUser(user:User) {
-    return this.http.put<User>(`http://localhost:8080/users/${user.userId}`, user);
+    return this.http.put<User>(`http://revbook-env.eba-mj2xqwak.us-east-1.elasticbeanstalk.com/users/${user.userId}`, user);
   }
 
   deleteUser(userId:Number) {
-    return this.http.delete(`http://localhost:8080/users/${userId}`);
+    return this.http.delete(`http://revbook-env.eba-mj2xqwak.us-east-1.elasticbeanstalk.com/users/${userId}`);
   }
 }
