@@ -1,0 +1,30 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+
+  pre_build:
+    commands:
+      - echo ======================Pre build ==================
+      - pwd
+      - ls -al
+      - ls -al ./src/main/resources/
+      - aws s3 cp s3://applicationfilesp3/main/application.properties ./src/main/resources/application.properties
+      - ls -al ./src/main/resources/
+#      - ls -al ./src/test/resources/
+#      - aws s3 cp s3://applicationfilesp3/test/application.properties ./src/test/resources/application.properties
+#      - ls -al ./src/test/resources/
+  build:
+    commands:
+      - mvn package
+
+  post_build:
+    commands:
+      - mvn package
+      - mv target/P3-RevBook-1.0-SNAPSHOT.jar ROOT.jar
+artifacts:
+  files:
+    - ROOT.jar
+    - .ebextensions/**/*
