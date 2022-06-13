@@ -13,6 +13,6 @@ export class PostImageService {
 
     formData.append("file", file, file.name);
 
-    return this.http.post<any>('http://revbook-env.eba-mj2xqwak.us-east-1.elasticbeanstalk.com/post-images/' + postId, formData);
+    return this.http.post<any>('http://localhost:8080/post-images/' + postId, formData);
   }
 }

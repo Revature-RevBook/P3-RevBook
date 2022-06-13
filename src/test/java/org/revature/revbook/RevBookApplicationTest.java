@@ -2,6 +2,9 @@ package org.revature.revbook;
 
 
 import org.junit.jupiter.api.*;
+import org.revature.revbook.configuration.ApplicationSecurityConfig;
+import org.revature.revbook.security.SessionFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 // @SpringBootTest
