@@ -38,20 +38,18 @@
 8)	Bootstrap
 9)	PostgreSQL / JDBC
 10)	Amazon Web Services – Relational Database
-11)	H2 Database
-12)	Postman
-13)	DBeaver
-14)	IntelliJ IDE
-15)	Git / GitHub
+11) Amazon Web Services - S3 Bucket
+12)	H2 Database
+13)	Postman
+14)	DBeaver
+15)	IntelliJ IDE
+16)	Git / GitHub
 
-#
+### Project Build Architecture
 
-## How to use this Repo:
+<img src = "images/EBSArch.png" height=500px>
 
-* Frontend
+### N Tier Web Application
 
-  * ...
+<img src="images/3Tier.png" height=500px>
 
-* Backend
-
-  * ...
