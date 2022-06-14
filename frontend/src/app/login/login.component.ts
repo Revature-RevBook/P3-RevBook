@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
    }, err => {
       if (err) {
         let errorElement:any = document.getElementById('errorMsg');
-        errorElement.innerHTML = "Invalid Username and Password";
+        errorElement.innerHTML = "<b>Invalid Username and Password<b/>";
       }
     });
   }

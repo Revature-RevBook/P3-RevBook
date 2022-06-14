@@ -28,6 +28,7 @@
         <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="tab-login">
             <form name="form" (ngSubmit)="login()" #f="ngForm" ngNativeValidate>
                 <!-- Username input -->
+                <p id="errorMsg"></p>
                 <div class="form-outline mb-4">
                     <input id="username" type="username" class=form-control name="username" [(ngModel)]="model.username"
                         #username="ngModel" required />
