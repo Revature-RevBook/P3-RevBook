@@ -14,6 +14,6 @@ export class RegistrationService {
   }
 
   isUnique(user: Partial<User>) {
-    return this.http.get<any>('http://localhost:8080/users/unique'+`?username=${user.username}&email=${user.email}`);
+    return this.http.get<any>('http://http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com//users/unique'+`?username=${user.username}&email=${user.email}`);
   }
 }
