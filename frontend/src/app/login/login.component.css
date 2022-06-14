@@ -1,57 +1,19 @@
 body {
-   font-family: 'Custom', Fallback, sans-serif !important;
-   /*The rest of body styling comes from revature.com style code*/
-   background-color: #f26925!important;
-   border-radius: 25px;
-   margin: 10% auto auto auto;
-   padding: 1%;
-   width: 20%;
-   color: #fff;
-   font-family: 'Futurabold';
-   text-transform: uppercase;
-   font-size: 13px;
+    margin        : 0;
+    padding       : 0;
+    display       : grid;
+    place-content : center;
+    min-height    : 100vh;
  }
 
- [aria-selected="true"]{
-   font-family: 'Custom', Fallback, sans-serif !important;
-   border-radius: 25px;
-   padding: 10px;
-   color:#000000;
-   background-color: #FCB414;
-   font-size: 13px;
+ #errorMsg {
+     color: red;
  }
 
- [aria-selected="false"]{
-   font-family: 'Custom', Fallback, sans-serif !important;
-   border-radius: 25px;
-   padding: 10px;
-   color:#000000;
-   font-size: 13px;
+ .card {
+    color: white;
  }
 
-
- [aria-selected="false"]:hover{
-   background-color:#72A4C2;
-   color:#fff;
- }
- button {
-   font-family: 'Custom', Fallback, sans-serif !important;
-   border-radius: 25px;
-   padding: 10px;
-   color:#000000;
-   border: 3px solid #FCB414;
-   text-align: center;
-   background-color: #FCB414;
-   text-transform: uppercase;
-   font-size: 13px;
- }
-
- button:hover{
-   background-color:#72A4C2;
-   color:#fff;
- }
-
- input{
-     border-radius: 5px;
-
+ .txtInput {
+    text-align: center;
  }

@@ -21,8 +21,6 @@ import { CommentComponent } from './comment/comment.component';
 import { VoteCommentComponent } from './vote-comment/vote-comment.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MessagesTableComponent } from './messages-table/messages-table.component';
-import { SubCommentComponent } from './sub-comment/sub-comment.component';
-import { SubCommentTableComponent } from './sub-comment-table/sub-comment-table.component';
 
 @NgModule({
   declarations: [
@@ -41,8 +39,6 @@ import { SubCommentTableComponent } from './sub-comment-table/sub-comment-table.
     VoteCommentComponent,
     MessagesComponent,
     MessagesTableComponent,
-    SubCommentComponent,
-    SubCommentTableComponent
   ],
   imports: [
     BrowserModule,

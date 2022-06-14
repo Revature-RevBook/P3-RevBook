@@ -1,21 +1,17 @@
 <div class="card">
     <table class="table">
         <thead>
-            <th scope="col">#</th>
+            <th scope="col">Id</th>
             <th scope="col">Sender</th>
             <th scope="col">Message</th>
-            <th class = "extraCol" scope="col"></th>
-            <th class = "extraCol" scope="col"></th>
-            <th class = "extraCol" scope="col"></th>
+            <th scope="col"></th>
         </thead>
         <tbody>
-            <tr scope="row" class = "message" *ngFor="let message of messages; let i = index;">
-                <td>{{i + 1}}</td>
-                <td>{{message.sender.username}}</td>
+            <tr scope="row" class = "message" *ngFor="let message of messages">
+                <td>{{message.messageId}}</td>
+                <td>{{message.sender.userId}}</td>
                 <td>{{message.messageContent}}</td>
-                <td><button class="btn btn-warning" style="background-color: #F26925; color: white;" (click)="selectMessage(i, message.messageId, message.sender)">Respond</button></td>
-                <td><button id="deleteBtn{{i}}" class="btn btn-warning" style="background-color: #F26925; color: white;" (click)="deleteMessage(i, message.messageId)">Delete</button></td>
-                <td><span id="deleteMsg">&Tab;</span></td>
+                <td><button class="btn btn-warning" style="background-color: #F26925; color: white;" (click)="selectMessage(message.messageId, message.sender)">Respond</button></td>
             </tr>
         </tbody>
     </table>
@@ -24,16 +20,11 @@
 <div id="respondToMsg">
     <hr>
     <div id="responseDiv" class="card">
-        <h5 id="responseHeader">Respond to Message</h5>
-        <p id="answerMsg"></p>
+        <h5 id="responseHeader">Respond to Message </h5>
         <form class="answer" (ngSubmit)="sendMessage()" #f="ngForm" ngNativeValidate>
             <textarea id="response" class="answerbox" name="answerbox" [(ngModel)]="message.messageContent" cols="50" rows="2"></textarea>
             <br>
             <button class="btn btn-warning" style="background-color: #F26925; color: white;">Send</button>
-        </form>
-        <br>
-        <form action="">
-            <button id="closeBtn" class="btn btn-warning" style="background-color: #F26925; color: white;" (click)="closeMessage()">Close</button>
         </form>
     </div>
 </div>

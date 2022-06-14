@@ -1,33 +1,33 @@
 <div>
     <table class="table">
         <tbody>
-            <tr scope="row" id="post" class="card border-info mb-5" *ngFor="let post of posts">
+            <tr scope="row" id="post" class="card border-info mb-3" *ngFor="let post of posts">
                 <td>
-                    <h5>{{post.postTitle}}</h5>
-                    <br />
-                    By: <b>{{post.user.username}}</b>
-                    <br />
-                    {{post.createdAt | date: 'medium'}}
+                    PostId: {{post.postId}}
+                    <br/>
+                    UserId: {{post.user.userId}}
+                    <br/>
+                    Title: {{post.postTitle}}
+                    <br/>
+                    Created At: {{post.createdAt}}
+                    <br/>
                     <div *ngIf="post.updatedAt != null">
-                        <br />
-                        Updated: {{post.updatedAt | date: 'medium'}}
+                        Updated At: {{post.updatedAt}}
                     </div>
-                    <br /><br />
-                    <span class="postContent">
-                        {{post.postContent}}
-                    </span>
+                    <br/><br/>
+                    {{post.postContent}}
                     <div *ngIf="post.postImgId != null">
                         <br/><br/>
-                        <img src="http://P3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/post-images/{{post.postId}}/image/download" alt="Post Image">
+                        <img src="http://localhost:8080/post-images/{{post.postId}}/image/download" alt="Post Image">
                     </div>
-                    <br /><br />
+                    <br/><br/>
                     <div>
-                        <app-vote-post [postId]="post.postId"></app-vote-post>
+                        <app-vote-post [postId] = "post.postId"></app-vote-post>
                     </div>
-                    <hr>
+                    <br/><br/>
                     <div>
-                        <app-comment [postId]="post.postId"></app-comment>
-                    </div>
+                        <app-comment [postId] = "post.postId"></app-comment>
+                    </div>                    
                 </td>
             </tr>
         </tbody>

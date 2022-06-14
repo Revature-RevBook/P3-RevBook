@@ -3,23 +3,21 @@
         <tbody>
             <tr scope="row" class = "card border-dark mb-3" *ngFor="let comment of comments">
                 <td>
-                    {{comment.commenter.username}}
+                    CommentId: {{comment.commentId}}
                     <br/>
-                    {{comment.createdAt | date: 'medium'}}
+                    CommenterId: {{comment.commenter.userId}}
+                    <br/>
+                    Created At: {{comment.createdAt}}
+                    <br/>
                     <div *ngIf="comment.updatedAt != null">
-                        <br/>
-                        Updated: {{comment.updatedAt | date: 'medium'}}
+                        Updated At: {{comment.updatedAt}}
                     </div>
                     <br/><br/>
-                    <div class="commentContent">
-                        {{comment.commentContent}}
-                    </div>
-                    <hr>
+                    {{comment.commentContent}}
+                    <br/><br/>
                     <div>
                         <app-vote-comment [commentId] = "comment.commentId"></app-vote-comment>
-                    </div>    
-                    <hr>
-                    <app-sub-comment [commentId] = "comment.commentId"></app-sub-comment>
+                    </div>                  
                 </td>
             </tr>
         </tbody>

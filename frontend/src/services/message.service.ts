@@ -10,26 +10,26 @@ export class MessageService {
   constructor(private http:HttpClient) { }
 
   addMessage(message:Partial<Message>) {
-    return this.http.post<any>('http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/messages', message);
+    return this.http.post<Message>('http://localhost:8080/messages', message);
   }
 
   getAllMessages() {
-    return this.http.get<Message[]>('http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/messages');
+    return this.http.get<Message[]>('http://localhost:8080/messages');
   }
 
   getMessageById(messageId:Number) {
-    return this.http.get<Message>(`http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/messages/${messageId}`);
+    return this.http.get<Message>(`http://localhost:8080/messages/${messageId}`);
   }
 
   getAllMessagesByRecipientId(recipientId:Number) {
-    return this.http.get<Message[]>(`http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/messages/recipient/${recipientId}`)
+    return this.http.get<Message[]>(`http://localhost:8080/messages/recipient/${recipientId}`)
   }
 
   updateMessage(message:Message) {
-    return this.http.put<Message>(`http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/messages/${message.messageId}`, message);
+    return this.http.put<Message>(`http://localhost:8080/messages/${message.messageId}`, message);
   }
 
   deleteMessage(messageId:Number) {
-    return this.http.delete(`http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/messages/${messageId}`);
+    return this.http.delete(`http://localhost:8080/messages/${messageId}`);
   }
 }

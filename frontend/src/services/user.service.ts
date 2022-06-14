@@ -10,26 +10,22 @@ export class UserService {
   constructor(private http:HttpClient) { }
 
   addUser(user:Partial<User>) {
-    return this.http.post<User>('http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/users', user);
+    return this.http.post<User>('http://localhost:8080/users', user);
   }
 
   getAllUsers() {
-    return this.http.get<User[]>('http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/users');
+    return this.http.get<User[]>('http://localhost:8080/users');
   }
 
   getUserById(userId:Number) {
-    return this.http.get<User>(`http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/users/${userId}`);
-  }
-
-  getUserByUsername(username:String) {
-    return this.http.get<User>(`http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/users/user/${username}`);
+    return this.http.get<User>(`http://localhost:8080/users/${userId}`);
   }
 
   updateUser(user:User) {
-    return this.http.put<User>(`http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/users/${user.userId}`, user);
+    return this.http.put<User>(`http://localhost:8080/users/${user.userId}`, user);
   }
 
   deleteUser(userId:Number) {
-    return this.http.delete(`http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/users/${userId}`);
+    return this.http.delete(`http://localhost:8080/users/${userId}`);
   }
 }
