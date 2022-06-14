@@ -10,11 +10,7 @@ export class MessageService {
   constructor(private http:HttpClient) { }
 
   addMessage(message:Partial<Message>) {
-<<<<<<< HEAD
-    return this.http.post<any>('http://localhost:8080/messages', message);
-=======
-    return this.http.post<Message>('http://revbook-env.eba-mj2xqwak.us-east-1.elasticbeanstalk.com/messages', message);
->>>>>>> 4dd5f1dade7704efeb81f85f0e78ec6d1f33e368
+    return this.http.post<any>('http://revbook-env.eba-mj2xqwak.us-east-1.elasticbeanstalk.com/messages', message);
   }
 
   getAllMessages() {

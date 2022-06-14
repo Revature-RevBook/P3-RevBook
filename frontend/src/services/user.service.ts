@@ -22,7 +22,7 @@ export class UserService {
   }
 
   getUserByUsername(username:String) {
-    return this.http.get<User>(`http://localhost:8080/users/user/${username}`);
+    return this.http.get<User>(`http://http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com//users/user/${username}`);
   }
 
   updateUser(user:User) {
