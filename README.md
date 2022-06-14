@@ -49,7 +49,6 @@
 8)	Bootstrap
 9)	PostgreSQL / JDBC
 10)	Amazon Web Services – Relational Database
-<<<<<<< HEAD
 11) Amazon CodeBuild
 12) Amazon Pipeline
 13) Amazon EC2 Instance - Elastic Beanstalk
@@ -59,14 +58,6 @@
 17)	DBeaver
 18)	IntelliJ IDE
 19)	Git / GitHub
-=======
-11) Amazon Web Services - S3 Bucket
-12)	H2 Database
-13)	Postman
-14)	DBeaver
-15)	IntelliJ IDE
-16)	Git / GitHub
->>>>>>> 4dd5f1dade7704efeb81f85f0e78ec6d1f33e368
 
 ### Project Build Architecture
 
