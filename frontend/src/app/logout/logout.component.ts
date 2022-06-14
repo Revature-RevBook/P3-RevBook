@@ -29,7 +29,7 @@ export class LogoutComponent implements OnInit {
 
     header.set("Authorization", sessionId);
     
-    this.http.get<any>("http://localhost:8080/login").subscribe();
+    this.http.get<any>("http://revbook-env.eba-mj2xqwak.us-east-1.elasticbeanstalk.com/login").subscribe();
 
     localStorage.clear();
     sessionStorage.clear();

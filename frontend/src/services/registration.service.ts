@@ -10,7 +10,7 @@ export class RegistrationService {
   constructor(private http:HttpClient) { }
 
   addUser(user:Partial<User>) {
-    return this.http.post<any>('http://localhost:8080/register', user);
+    return this.http.post<any>('http://revbook-env.eba-mj2xqwak.us-east-1.elasticbeanstalk.com/register', user);
   }
 
   isUnique(user: Partial<User>) {
