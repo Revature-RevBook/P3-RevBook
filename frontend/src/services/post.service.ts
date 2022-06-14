@@ -10,10 +10,10 @@ export class PostService {
   constructor(private http:HttpClient) { }
 
   addPost(post:Partial<Post>) {
-    return this.http.post<any>('http://revbook-env.eba-mj2xqwak.us-east-1.elasticbeanstalk.com/posts', post);
+    return this.http.post<any>('http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/posts', post);
   }
 
   getAllPosts() {
-    return this.http.get<Post[]>('http://revbook-env.eba-mj2xqwak.us-east-1.elasticbeanstalk.com/posts');
+    return this.http.get<Post[]>('http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/posts');
   }
 }
