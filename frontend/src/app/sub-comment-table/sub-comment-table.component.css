@@ -3,10 +3,14 @@ div {
     place-content: center;
 }
 
-tr {
+tbody {
     background-color: #B9B9BA;
 }
 
-.commentContent {
+tr {
+    background-color: #72A4C2;
+}
+
+.subCommentContent {
     word-break: break-all;
 }

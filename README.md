@@ -23,7 +23,18 @@
 ## Project User Stories:
 1) Users can register a new account.
 2) Users can sign in.
-3) ...
+3) Users can manage account details.
+4) Users can delete their account.
+5) Users can create posts.
+6) Users can add an image to their posts.
+7) Users can view others posts.
+8) Users can like/dislike Posts.
+9) Users can comment on posts.
+10) Users can like/dislike Comments.
+11) Users can reply to Comments.
+12) Users can message other Users.
+13) Users can respond to messages.
+14) Users can choose to delete messages instead.
 
 #
 
@@ -38,12 +49,15 @@
 8)	Bootstrap
 9)	PostgreSQL / JDBC
 10)	Amazon Web Services – Relational Database
-11) Amazon Web Services - S3 Bucket
-12)	H2 Database
-13)	Postman
-14)	DBeaver
-15)	IntelliJ IDE
-16)	Git / GitHub
+11) Amazon CodeBuild
+12) Amazon Pipeline
+13) Amazon EC2 Instance - Elastic Beanstalk
+14) Amazon Web Services - S3 Bucket
+15)	H2 Database
+16)	Postman
+17)	DBeaver
+18)	IntelliJ IDE
+19)	Git / GitHub
 
 ### Project Build Architecture
 

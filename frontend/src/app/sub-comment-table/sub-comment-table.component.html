@@ -1,0 +1,27 @@
+<div>
+    <table class="table">
+        <tbody>
+            <tr scope="row" class = "card border-dark mb-3" *ngFor="let subComment of subComments">
+                <td>
+                    {{subComment.commenter.username}}
+                    <br/>
+                    {{subComment.createdAt | date: 'medium'}}
+                    <div *ngIf="subComment.updatedAt != null">
+                        <br/>
+                        Updated: {{subComment.updatedAt | date: 'medium'}}
+                    </div>
+                    <br/><br/>
+                    <div class="subCommentContent">
+                        {{subComment.subCommentContent}}
+                    </div>
+                    <!-- * Not Doing This *
+                    <hr>
+                    <div>
+                        SubCommentVote
+                        <app-vote-sub-comment [subCommentId] = "subComment.subCommentId"></app-vote-sub-comment>
+                    </div>     -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

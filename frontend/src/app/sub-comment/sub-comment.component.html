@@ -1,0 +1,12 @@
+<div>
+    <form id="form1"  class="card border-secondary mb-3" name="form" (ngSubmit)="submitSubComment()" #f="ngForm" ngNativeValidate>
+        <h5>Reply to Comment:</h5>
+        <input type="text" class="form-control" name="postComment" [(ngModel)]="subComment.subCommentContent" #postContent="ngModel" (ngModelChange)="changeCharsRemain()" maxlength="255" required/>
+        <p id="charsRemain">Characters Remaining: {{charsRemain}}</p>
+        <p id="subCommentMsg"></p>
+        <button type="submit" class="btn btn-dark btm-sm" style="background-color: #474C55; color: white;" (focus)="subComments.refreshSubComments()">Submit</button>
+    </form>
+    <br/><br/>
+    <h5>Sub Comments</h5>
+    <app-sub-comment-table #subComments [commentId] = "commentId"></app-sub-comment-table>
+</div>

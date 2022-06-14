@@ -1,6 +1,5 @@
 package org.revature.revbook.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,29 +14,27 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Entity
 @ToString
-public class Comment {
+public class SubComment {
 
-    // Data members for the Comment object:
+    // Data members for the SubComment object:
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long commentId;
+    private Long subCommentId;
     private Timestamp createdAt;
     private Timestamp updatedAt;
-    private String commentContent;
+    private String subCommentContent;
     @ManyToOne
     @JoinColumn(name= "user_id", nullable = false)
     private User commenter;
     @Column(nullable = false)
-    private Long postId;
-
+    private Long commentId;
 
     // Constructor without ID:
-    public Comment(Timestamp createdAt, Timestamp updatedAt, String commentContent, User commenter, Long postId) {
+    public SubComment(Timestamp createdAt, Timestamp updatedAt, String subCommentContent, User commenter, Long commentId) {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.commentContent = commentContent;
+        this.subCommentContent = subCommentContent;
         this.commenter = commenter;
-        this.postId = postId;
+        this.commentId = commentId;
     }
-
 }

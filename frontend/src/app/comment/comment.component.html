@@ -2,7 +2,8 @@
     <form id="form1"  class="card border-secondary mb-3" name="form" (ngSubmit)="submitComment()" #f="ngForm" ngNativeValidate>
         <h5>Comment:</h5>
         <input type="text" class="form-control" name="postComment" [(ngModel)]="comment.commentContent" #postContent="ngModel" required/>
-        <br/><br/>
+        <p id="charsRemain">Characters Remaining: {{charsRemain}}</p>
+        <p id="msg"></p>
         <button type="submit" class="btn btn-dark btm-sm" style="background-color: #474C55; color: white;" (focus)="comments.refreshComments()">Submit</button>
     </form>
     <br/><br/>

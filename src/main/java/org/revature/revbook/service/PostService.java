@@ -43,7 +43,7 @@ public class PostService {
     // This method will retrieve List of Post from the database by calling the PostRepository and using the
     //  findByUserId method which will supply the userId to the method:
     public List<Post> getAllPostsByUserId(Long userId) {
-        return postRepository.findByUserId(userId);
+        return postRepository.findByUserUserId(userId);
     }
 
     // UpdatePost method

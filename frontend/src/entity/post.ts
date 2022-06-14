@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export interface Post {
     postId: Number,
     postTitle: string,
@@ -5,5 +7,5 @@ export interface Post {
     updatedAt: Date,
     postContent: string,
     postImgId: Number,
-    userId: Number
+    user: Partial<User>
 }
