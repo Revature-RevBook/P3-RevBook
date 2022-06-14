@@ -82,5 +82,21 @@ public class UserService implements UserDetailsService {
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username);
     }
+
+    // CheckIfUserExists method
+    // This will check to see if the user exists in the database:
+//    public boolean checkIfUserExists(String username) {
+//        User user = userRepository.findByUsername(username);
+//
+//        if(user != null) {
+//            return
+//        }
+//    }
+
+    //ensures no two users share both username and email combo
+    public Boolean isUnique(User user) {
+        List<User> returnedUsers = userRepository.findByUserNameEmail(user.getUsername(), user.getEmail());
+        return returnedUsers.size() < 1;
+    }
 }
 

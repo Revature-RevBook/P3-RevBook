@@ -19,7 +19,7 @@ public class MessageController {
 
     // PostMapping to add a Message to the database:
     @PostMapping("")
-    public Message addMessage(@RequestBody Message message) {
+    public boolean addMessage(@RequestBody Message message) {
         return messageService.addMessage(message);
     }
 

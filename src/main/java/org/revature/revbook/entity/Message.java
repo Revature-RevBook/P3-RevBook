@@ -23,18 +23,20 @@ public class Message {
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private String messageContent;
-    @Column(nullable = false)
-    private Long senderId;
-    @Column(nullable = false)
-    private Long recipientId;
+    @ManyToOne
+    @JoinColumn(name= "senderId", nullable = false)
+    private User sender;
+    @ManyToOne
+    @JoinColumn(name= "recipientId", nullable = false)
+    private User recipient;
 
     // Constructor without ID:
-    public Message(Timestamp createdAt, Timestamp updatedAt, String messageContent, Long senderId, Long recipientId) {
+    public Message(Timestamp createdAt, Timestamp updatedAt, String messageContent, User sender, User recipient) {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.messageContent = messageContent;
-        this.senderId = senderId;
-        this.recipientId = recipientId;
+        this.sender = sender;
+        this.recipient = recipient;
     }
 
 }

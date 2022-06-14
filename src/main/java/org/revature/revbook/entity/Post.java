@@ -25,16 +25,17 @@ public class Post {
     private Timestamp updatedAt;
     private String postContent;
     private Long postImgId;
-    @Column(nullable = false)
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name= "user_id", nullable = false)
+    private User user;
 
     // Constructor without ID:
-    public Post(String postTitle, Timestamp createdAt, Timestamp updatedAt, String postContent, Long userId) {
+    public Post(String postTitle, Timestamp createdAt, Timestamp updatedAt, String postContent, User user) {
         this.postTitle = postTitle;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.postContent = postContent;
-        this.userId = userId;
+        this.user = user;
 
     }
 }

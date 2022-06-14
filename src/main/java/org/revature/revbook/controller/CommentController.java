@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 // CommentController Class
-// This class will handle the HTTP Requests for the API/resource paths associated with the User objects.
+// This class will handle the HTTP Requests for the API/resource paths associated with the Comment objects.
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(path = "/comments")

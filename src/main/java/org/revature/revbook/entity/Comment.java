@@ -24,18 +24,19 @@ public class Comment {
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private String commentContent;
-    @Column(nullable = false)
-    private Long commenterId;
+    @ManyToOne
+    @JoinColumn(name= "user_id", nullable = false)
+    private User commenter;
     @Column(nullable = false)
     private Long postId;
 
 
     // Constructor without ID:
-    public Comment(Timestamp createdAt, Timestamp updatedAt, String commentContent, Long commenterId, Long postId) {
+    public Comment(Timestamp createdAt, Timestamp updatedAt, String commentContent, User commenter, Long postId) {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.commentContent = commentContent;
-        this.commenterId = commenterId;
+        this.commenter = commenter;
         this.postId = postId;
     }
 

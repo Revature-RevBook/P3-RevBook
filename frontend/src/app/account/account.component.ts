@@ -25,6 +25,10 @@ export class AccountComponent implements OnInit {
     profileImgLink: ''
   }
 
+  model:any = {
+    confirmPassword: ''
+  }
+
   constructor(private titleService: Title, 
     private http: HttpClient, 
     private router: Router,
@@ -33,6 +37,14 @@ export class AccountComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.setTitle('User Dashboard');
     this.initAccountDetails();
+  }
+
+  clearMsg() {
+    setTimeout(() => {
+      let pwdErrMsg:any = document.getElementById('accErrMsg');
+      pwdErrMsg.innerHTML = "";
+    }, 3000);
+
   }
 
   initAccountDetails() {
@@ -44,8 +56,18 @@ export class AccountComponent implements OnInit {
   }
 
   updateAccount() {
+    let pwdErrMsg:any = document.getElementById('accErrMsg');
+
     if(this.user.username == '' || this.user.password == '' || this.user.email == '') {
-      alert('Please fill out all fields with current or new information before updating.');
+      pwdErrMsg.innerHTML = "Please fill out all fields with current or new information before updating.";
+      this.clearMsg();
+      return;
+    }
+
+    // Check if both password textboxes match:
+    if(this.user.password != this.model.confirmPassword) {
+      pwdErrMsg.innerHTML = "Passwords do not match";
+      this.clearMsg();
       return;
     }
 

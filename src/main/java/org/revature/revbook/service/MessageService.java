@@ -2,6 +2,7 @@ package org.revature.revbook.service;
 
 import org.revature.revbook.data.MessageRepository;
 import org.revature.revbook.entity.Message;
+import org.revature.revbook.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,15 +17,29 @@ public class MessageService {
     @Autowired
     MessageRepository messageRepository;
 
+    @Autowired
+    UserService userService;
+
     // AddMessage method
     // This method will insert a new Message object into the database as a record:
-    public Message addMessage(Message message){
+    public boolean addMessage(Message message){
+        // Check if user exists first:
+        User existingUser = userService.loadUserByUsername(message.getRecipient().getUsername());
+
+        // If the user does not exist, return false that the message sent:
+        if(existingUser == null) {
+            return false;
+        }
+
+        // If true, add the user to the recipient of the message:
+        message.setRecipient(existingUser);
+
         // Add the current time to the createdAt for message:
         message.setCreatedAt(Timestamp.valueOf(LocalDateTime.now()));
 
         // Call MessageRepository to save the modified message:
         messageRepository.save(message);
-        return message;
+        return true;
     }
 
     // GetAllMessages method
@@ -43,7 +58,7 @@ public class MessageService {
     // This method will retrieve List of Messages from the database by calling the MessageRepository and using the
     //  findByRecipientId method which will supply the recipientId to the method:
     public List<Message> getAllMessagesByRecipientId(Long recipientId) {
-        return messageRepository.findByRecipientId(recipientId);
+        return messageRepository.findByRecipientUserId(recipientId);
     }
 
     // UpdateMessage method

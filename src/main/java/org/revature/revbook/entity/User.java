@@ -33,9 +33,13 @@ public class User implements UserDetails {
     private String email;
     private String profileImgLink;
 
+    // Constructor for checking unique username/email:
+    public User(String username, String email) {
+        this.username = username;
+        this.email = email;
+    }
 
     // Constructor without ID:
-
     public User(String username, String password, Timestamp createdAt, Timestamp updatedAt, String email, String profileImgLink) {
         this.username = username;
         this.password = password;

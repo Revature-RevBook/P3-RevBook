@@ -5,7 +5,9 @@ import org.revature.revbook.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 // UserController Class
 // This class will handle the HTTP Requests for the API/resource paths associated with the User objects.
@@ -48,5 +50,16 @@ public class UserController {
     public boolean deleteUser(@PathVariable("userId") Long userId) {
         userService.deleteUser(userId);
         return true;
+    }
+
+    @RequestMapping(path = "/unique", method = RequestMethod.GET)
+    public Map<String, Boolean> isUnique(@RequestParam(name = "username") String username,
+                                         @RequestParam(name = "email") String email) {
+        User user = new User(username, email);
+        Boolean isUnique = userService.isUnique(user);
+        if (isUnique) {
+            return Collections.singletonMap("isUnique" , isUnique);
+        }
+        return Collections.singletonMap("isUnique" , false);
     }
 }

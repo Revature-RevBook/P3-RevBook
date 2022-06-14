@@ -1,0 +1,16 @@
+div {
+    display: grid;
+    place-content: center;
+}
+
+tbody {
+    background-color: #B9B9BA;
+}
+
+tr {
+    background-color: #72A4C2;
+}
+
+.subCommentContent {
+    word-break: break-all;
+}

@@ -21,6 +21,10 @@ export class UserService {
     return this.http.get<User>(`http://localhost:8080/users/${userId}`);
   }
 
+  getUserByUsername(username:String) {
+    return this.http.get<User>(`http://localhost:8080/users/user/${username}`);
+  }
+
   updateUser(user:User) {
     return this.http.put<User>(`http://localhost:8080/users/${user.userId}`, user);
   }

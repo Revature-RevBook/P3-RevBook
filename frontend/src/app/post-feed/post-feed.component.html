@@ -8,24 +8,27 @@
 </head>
 <body>
     <app-navbar></app-navbar>
+    <br>
     <h1>Create Post:</h1>
     <form class="card" name="form" style="background-color: #72A4C2;" (ngSubmit)="submitPost()" #f="ngForm" ngNativeValidate>
         <div>
             <label for="inputStyle" class="col-sm-2 col-form-label">Title:</label>
             <br/>
-            <input type="text" id = "inputStyle" class="form-control" name="postTitle" [(ngModel)]="post.postTitle" #postTitle="ngModel" required/>
+            <input type="text" id = "inputStyle" class="form-control" name="postTitle" [(ngModel)]="post.postTitle" #postTitle="ngModel" maxlength="255" required/>
         </div>
         <div>
             Content:
             <br/>
-            <input type="text" class="form-control" name="postContent" [(ngModel)]="post.postContent" #postContent="ngModel" required/>
+            <input id="postContent" type="text" class="form-control" name="postContent" [(ngModel)]="post.postContent" #postContent="ngModel" (ngModelChange)="changeCharsRemain()" maxlength="255" required/>
         </div>
+        <p id="charsRemain">Characters Remaining: {{charsRemain}}</p>
         <div>
             Image:
             <br/>
             <input id="imageInput" type="file" accept="image/*">
         </div>
         <br/>
+        <p id="postMsg"></p>
         <div>
             <button type="submit" class="btn btn-warning" style="background-color: #FCB414;" (focus)="posts.refreshPosts()">Submit</button>
         </div>

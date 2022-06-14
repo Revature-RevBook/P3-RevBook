@@ -10,7 +10,7 @@ export class MessageService {
   constructor(private http:HttpClient) { }
 
   addMessage(message:Partial<Message>) {
-    return this.http.post<Message>('http://localhost:8080/messages', message);
+    return this.http.post<any>('http://localhost:8080/messages', message);
   }
 
   getAllMessages() {

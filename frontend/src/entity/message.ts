@@ -1,8 +1,10 @@
+import { User } from "./user";
+
 export interface Message {
     messageId: Number,
     createdAt: Date,
     updatedAt: Date,
     messageContent: String,
-    senderId: Number,
-    recipientId: Number
+    sender: Partial<User>,
+    recipient: Partial<User>
 }

@@ -1,3 +1,13 @@
 #post {
-    margin: 0 5% 0 5%;
+    width: 75%;
+    margin: auto;
+}
+
+.card .postContent {
+    margin:auto;
+    word-break: break-all;
+}
+
+tr {
+    margin: 0;
 }
