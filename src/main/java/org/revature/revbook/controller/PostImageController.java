@@ -22,9 +22,9 @@ public class PostImageController {
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public void addPostImage(@PathVariable("postId") Long postId,
+    public PostImage addPostImage(@PathVariable("postId") Long postId,
                          @RequestParam("file") MultipartFile file) {
-        postImageService.addPostImage(postId, file);
+        return postImageService.addPostImage(postId, file);
     }
 
 

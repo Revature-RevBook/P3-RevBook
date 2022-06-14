@@ -30,7 +30,7 @@ public class PostImageService {
     @Autowired
     FileStore fileStore;
 
-    public void addPostImage(Long postId, MultipartFile file) {
+    public PostImage addPostImage(Long postId, MultipartFile file) {
 
         // Check if file is empty:
         if (file.isEmpty()) {
@@ -43,7 +43,8 @@ public class PostImageService {
         }
 
         // Check if post for image to attach to exists:
-        Post post = postRepository.getById(postId);
+        Post post = postRepository.findById(postId).get();
+        System.out.println(post.getPostContent());
         if (!post.getPostId().equals(postId)) {
             throw new IllegalStateException("Post does not exist.");
         }
@@ -61,7 +62,8 @@ public class PostImageService {
         try {
             fileStore.upload(path, fileName, Optional.of(metaData), file.getInputStream());
             PostImage postImage = new PostImage(fileName, postId);
-            postImageRepository.save(postImage);
+            postImage = postImageRepository.save(postImage);
+            System.out.println(postImage);
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }
@@ -69,8 +71,10 @@ public class PostImageService {
         // Call PostImageRepository to find the new image to obtain its ID.
         //  Then, update the post with the postImage's imageId and call the service to send it to the database:
         PostImage postImage = postImageRepository.findByPostId(postId);
+        System.out.println(postImage.getPostId());
         post.setPostImgId(postImage.getImageId());
         postService.updatePost(post, postId);
+        return postImage;
     }
 
 //    public PostImage getPostImageById(Long imageId) {
