@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    let url = 'http://localhost:8080/login';
+    let url = 'http://P3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/login';
     this.http.post<any>(url, {
       username: this.model.username,
       password: this.model.password
@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
    }, err => {
       if (err) {
         let errorElement:any = document.getElementById('errorMsg');
-        errorElement.innerHTML = "Invalid Username and Password";
+        errorElement.innerHTML = "<b>Invalid Username and Password<b/>";
       }
     });
   }

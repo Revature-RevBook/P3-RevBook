@@ -6,6 +6,7 @@ import { PostFeedTableComponent } from './post-feed-table.component';
 import { RouterTestingModule } from '@angular/router/testing'
 import { PostService } from 'src/services/post.service';
 import { PostServiceMock } from '../mocks/post.service.mock';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('PostFeedTableComponent', () => {
   let component: PostFeedTableComponent;
@@ -20,7 +21,8 @@ describe('PostFeedTableComponent', () => {
       declarations: [ PostFeedTableComponent ],
       providers: [
         {provide: PostService, useClass: PostServiceMock}
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
       })
     .compileComponents();
   });
@@ -50,11 +52,9 @@ describe('PostFeedTableComponent', () => {
     const fixture = TestBed.createComponent(PostFeedTableComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('tbody')?.textContent).toContain('PostId: 1');
-    expect(compiled.querySelector('tbody')?.textContent).toContain('UserId: 1');
-    expect(compiled.querySelector('tbody')?.textContent).toContain('Title: test title');
-    expect(compiled.querySelector('tbody')?.textContent).toContain('Created At:');
-    expect(compiled.querySelector('tbody')?.textContent).toContain('Updated At:');
+    expect(compiled.querySelector('tbody')?.textContent).toContain('By:');
+    expect(compiled.querySelector('tbody')?.textContent).toContain('test title');
+    expect(compiled.querySelector('tbody')?.textContent).toContain('Updated:');
     expect(compiled.querySelector('tbody')?.textContent).toContain('test content');
   }));
 

@@ -1,23 +1,28 @@
 <div>
+    <hr *ngIf="comments.length > 0">
+    <h5 *ngIf="comments.length > 0">Comments</h5>
+    <hr *ngIf="comments.length > 0">
     <table class="table">
         <tbody>
             <tr scope="row" class = "card border-dark mb-3" *ngFor="let comment of comments">
                 <td>
-                    CommentId: {{comment.commentId}}
+                    {{comment.commenter.username}}
                     <br/>
-                    CommenterId: {{comment.commenter.userId}}
-                    <br/>
-                    Created At: {{comment.createdAt}}
-                    <br/>
+                    {{comment.createdAt | date: 'medium'}}
                     <div *ngIf="comment.updatedAt != null">
-                        Updated At: {{comment.updatedAt}}
+                        <br/>
+                        Updated: {{comment.updatedAt | date: 'medium'}}
                     </div>
                     <br/><br/>
-                    {{comment.commentContent}}
-                    <br/><br/>
+                    <div class="commentContent">
+                        {{comment.commentContent}}
+                    </div>
+                    <hr>
                     <div>
                         <app-vote-comment [commentId] = "comment.commentId"></app-vote-comment>
-                    </div>                  
+                    </div>    
+                    <hr>
+                    <app-sub-comment [commentId] = "comment.commentId"></app-sub-comment>
                 </td>
             </tr>
         </tbody>

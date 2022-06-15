@@ -6,6 +6,7 @@ import { VotePostComponent } from './vote-post.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { VotePostService } from 'src/services/vote-post.service';
 import {VotePostServiceMock} from '../mocks/vote-post.service.mock';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('VotePostComponent', () => {
   let component: VotePostComponent;
@@ -20,7 +21,8 @@ describe('VotePostComponent', () => {
       declarations: [ VotePostComponent ],
       providers: [
         {provide: VotePostService, useClass: VotePostServiceMock}
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   });

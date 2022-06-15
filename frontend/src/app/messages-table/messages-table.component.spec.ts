@@ -6,6 +6,7 @@ import { MessagesTableComponent } from './messages-table.component';
 import { RouterTestingModule } from '@angular/router/testing'
 import { MessageService } from 'src/services/message.service';
 import { MessageServiceMock } from '../mocks/message.service.mock';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('MessageTableComponent', () => {
   let component: MessagesTableComponent;
@@ -19,7 +20,8 @@ describe('MessageTableComponent', () => {
       declarations: [ MessagesTableComponent ],
       providers: [
         {provide: MessageService, useClass: MessageServiceMock}
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   });
@@ -38,7 +40,7 @@ describe('MessageTableComponent', () => {
   it('should get message from mock service', waitForAsync(() => {
     expect(component.messages).toBeTruthy();
     expect(component.messages[0].messageContent).toContain('test message');
-    expect(component.messages[0].sender.userId).toEqual(1);
+    expect(component.messages[0].sender).toEqual(Object());
     expect(component.messages[0].messageId).toEqual(1);
   }
   ));
@@ -48,7 +50,7 @@ describe('MessageTableComponent', () => {
     const fixture = TestBed.createComponent(MessagesTableComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('thead')?.textContent).toContain('Id');
+    expect(compiled.querySelector('thead')?.textContent).toContain('#');
     expect(compiled.querySelector('thead')?.textContent).toContain('Sender');
     expect(compiled.querySelector('thead')?.textContent).toContain('Message');
   }));

@@ -8,26 +8,29 @@
 </head>
 <body>
     <app-navbar></app-navbar>
+    <section id="top_section"></section>
     <br/>
     <h1>Send Message:</h1>
     <div class="card" style="background-color: #72A4C2;">
         <div class="container-fluid">
             <form (ngSubmit)="sendMessage()" #f="ngForm" ngNativeValidate>
+                <p id="messageMsg"></p>
                 <div class="form-group row">
-                    <label for="message" class="col-sm-2 col-form-label">Message</label>
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Recipient</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="message" name="message" [(ngModel)]="message.messageContent" placeholder="Enter message" required>
+                        <input type="text" class="form-control" id="recipient" name="recipient" [(ngModel)]="message.recipient!.username" placeholder="Enter username" required>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="recipient" class="col-sm-2 col-form-label">Recipient</label>
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Message</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="recipient" name="recipient" [(ngModel)]="message.recipient!.userId" placeholder="Enter user id" required>
+                        <textarea type="text" class="form-control" name="message" id="message" rows="3" [(ngModel)]="message.messageContent" #postContent="ngModel" placeholder="Enter message" (ngModelChange)="changeCharsRemain()" maxlength="255" required></textarea>
+                        <p id="charsRemain">Characters Remaining: {{charsRemain}}</p>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-10">
-                        <button type="submit" class="btn btn-dark"  style="background-color: #474C55;">Send</button>
+                        <button type="submit" class="btn btn-dark"  style="background-color: #474C55;" (focus)="messages.delayedGetMessagesByRecipient(userId)">Send</button>
                     </div>
                 </div>
             </form>
@@ -35,7 +38,7 @@
     </div>
     <br><br>
     <div>
-        <app-messages-table></app-messages-table>
+        <app-messages-table #messages></app-messages-table>
     </div>
 </body>
 <hr>

@@ -29,7 +29,17 @@ export class PostFeedTableComponent implements OnInit {
   getAllPosts() {
 
     this.postService.getAllPosts().subscribe((posts:Post[]) => {
-      this.posts = posts;
+      let index = 0;
+      let placeholderPosts = [];
+
+      // Step through result in reverse to put latest posts at top:
+      for(let x = posts.length-1; x >= 0; x--) {
+        placeholderPosts[index] = posts[x];
+        index++;
+      }
+      this.posts = placeholderPosts;
+
+      // this.posts = posts;
     })
   }
 }

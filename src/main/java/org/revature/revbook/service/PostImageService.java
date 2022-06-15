@@ -44,7 +44,6 @@ public class PostImageService {
 
         // Check if post for image to attach to exists:
         Post post = postRepository.findById(postId).get();
-        System.out.println(post.getPostContent());
         if (!post.getPostId().equals(postId)) {
             throw new IllegalStateException("Post does not exist.");
         }
@@ -63,7 +62,6 @@ public class PostImageService {
             fileStore.upload(path, fileName, Optional.of(metaData), file.getInputStream());
             PostImage postImage = new PostImage(fileName, postId);
             postImage = postImageRepository.save(postImage);
-            System.out.println(postImage);
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SubComment } from 'src/entity/sub-comment';
+import { User } from 'src/entity/user';
 import { SubCommentService } from 'src/services/sub-comment.service';
 
 @Component({
@@ -10,7 +11,19 @@ import { SubCommentService } from 'src/services/sub-comment.service';
 export class SubCommentTableComponent implements OnInit {
   @Input() commentId: Number = 0;
 
-  subComments!:SubComment[];
+  time = new Date();
+
+  user:Partial<User> = {}
+
+  subComment:SubComment = {
+    subCommentId: 0,
+    createdAt: this.time,
+    updatedAt: this.time,
+    commenter: this.user,
+    commentId: 0
+  }
+
+  subComments:SubComment[] = [this.subComment];
 
   constructor(private subCommentService:SubCommentService) { }
 

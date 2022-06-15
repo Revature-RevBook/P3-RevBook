@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { RegisterComponent } from './register.component';
 import { RouterTestingModule } from '@angular/router/testing'
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -14,7 +15,8 @@ describe('RegisterComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterTestingModule, FormsModule],
-      declarations: [ RegisterComponent ]
+      declarations: [ RegisterComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   });
@@ -43,12 +45,12 @@ describe('RegisterComponent', () => {
       const fixture = TestBed.createComponent(RegisterComponent);
       fixture.detectChanges();
       const compiled = fixture.nativeElement as HTMLElement;
-      expect(compiled.querySelector('h1')?.textContent).toContain('Please provide account details to sign up:');
+      expect(compiled.querySelector('#tab-register')?.textContent).toContain('Register');
     }));
 
     //username
     it('should have an input element username', () => {
-      const el = fixture.debugElement.query(By.css('#username'));
+      const el = fixture.debugElement.query(By.css('#registerUsername'));
       expect(el).toBeTruthy();
       expect(el.nativeElement.getAttribute('type')).toEqual('text');
       expect(el.nativeElement.getAttribute('name')).toEqual('username');
@@ -56,7 +58,7 @@ describe('RegisterComponent', () => {
 
     //password
     it('should have an input element password', () => {
-      const el = fixture.debugElement.query(By.css('#password'));
+      const el = fixture.debugElement.query(By.css('#registerPassword'));
       expect(el).toBeTruthy();
       expect(el.nativeElement.getAttribute('type')).toEqual('password');
       expect(el.nativeElement.getAttribute('name')).toEqual('password');
@@ -64,7 +66,7 @@ describe('RegisterComponent', () => {
 
     //email
     it('should have an input element email', () => {
-      const el = fixture.debugElement.query(By.css('#email'));
+      const el = fixture.debugElement.query(By.css('#registerEmail'));
       expect(el).toBeTruthy();
       expect(el.nativeElement.getAttribute('type')).toEqual('email');
       expect(el.nativeElement.getAttribute('name')).toEqual('email');
@@ -87,9 +89,9 @@ describe('RegisterComponent', () => {
     it('should update the user property - inside the component', waitForAsync(() => {
       const hostElement = fixture.nativeElement;
   
-      const usernameInput: HTMLInputElement = hostElement.querySelector("#username");
-      const emailInput: HTMLInputElement = hostElement.querySelector("#email");
-      const passwordInput: HTMLInputElement = hostElement.querySelector("#password");
+      const usernameInput: HTMLInputElement = hostElement.querySelector("#registerUsername");
+      const emailInput: HTMLInputElement = hostElement.querySelector("#registerEmail");
+      const passwordInput: HTMLInputElement = hostElement.querySelector("#registerPassword");
       fixture.detectChanges();
   
       usernameInput.value = "test";

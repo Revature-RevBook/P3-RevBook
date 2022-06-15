@@ -6,6 +6,7 @@ import { CommentTableComponent } from './comment-table.component';
 import { RouterTestingModule } from '@angular/router/testing'
 import { CommentService } from 'src/services/comment.service';
 import { CommentServiceMock} from 'src/app/mocks/comment.service.mock'
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('CommentTableComponent', () => {
   let component: CommentTableComponent;
@@ -19,7 +20,8 @@ describe('CommentTableComponent', () => {
       declarations: [ CommentTableComponent ],
       providers: [
         {provide: CommentService, useClass: CommentServiceMock}
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   });

@@ -4,7 +4,7 @@ import { BrowserModule, By } from '@angular/platform-browser';
 
 import { HomeComponent } from './home.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { DebugElement } from '@angular/core';
+import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing'
 
 describe('HomeComponent', () => {
@@ -16,7 +16,8 @@ describe('HomeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterTestingModule],
-      declarations: [ HomeComponent ]
+      declarations: [ HomeComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 

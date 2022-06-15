@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { MessagesComponent } from './messages.component';
 import { RouterTestingModule } from '@angular/router/testing'
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('MessagesComponent', () => {
   let component: MessagesComponent;
@@ -14,7 +15,8 @@ describe('MessagesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterTestingModule, FormsModule],
-      declarations: [ MessagesComponent ]
+      declarations: [ MessagesComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   });
@@ -31,8 +33,8 @@ describe('MessagesComponent', () => {
 
   it('should initialize message', waitForAsync(() => {
     expect(component.message.messageContent).toEqual('');
-    expect(component.message.sender?.userId).toEqual(0);
-    expect(component.message.recipient?.userId).toEqual(0);
+    expect(component.message.sender).toEqual(Object());
+    expect(component.message.recipient).toEqual(Object());
   }));
 
   it('should display header correctly', waitForAsync(() => {

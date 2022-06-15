@@ -15,7 +15,10 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle('Sign Out');
-    this.logout();
+    let sessionId:any = sessionStorage.getItem('token');
+    if(sessionId != null) {
+      this.logout();
+    }
   }
 
   logout() {
@@ -29,7 +32,7 @@ export class LogoutComponent implements OnInit {
 
     header.set("Authorization", sessionId);
     
-    this.http.get<any>("http://localhost:8080/login").subscribe();
+    this.http.get<any>("http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/login").subscribe();
 
     localStorage.clear();
     sessionStorage.clear();

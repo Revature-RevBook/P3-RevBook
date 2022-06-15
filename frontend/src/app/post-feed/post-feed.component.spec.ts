@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { PostFeedComponent } from './post-feed.component';
 import { RouterTestingModule } from '@angular/router/testing'
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('PostFeedComponent', () => {
   let component: PostFeedComponent;
@@ -15,7 +16,8 @@ describe('PostFeedComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterTestingModule, FormsModule],
-      declarations: [ PostFeedComponent ]
+      declarations: [ PostFeedComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   });
@@ -46,7 +48,7 @@ describe('PostFeedComponent', () => {
   });
 
   it('should have an input element Content', () => {
-    const el = fixture.debugElement.query(By.css('#content'));
+    const el = fixture.debugElement.query(By.css('#postContent'));
     expect(el).toBeTruthy();
     expect(el.nativeElement.getAttribute('type')).toEqual('text');
     expect(el.nativeElement.getAttribute('name')).toEqual('postContent');
@@ -71,7 +73,7 @@ describe('PostFeedComponent', () => {
     const hostElement = fixture.nativeElement;
 
     const titleInput: HTMLInputElement = hostElement.querySelector("#inputStyle");
-    const contentInput: HTMLInputElement = hostElement.querySelector("#content");
+    const contentInput: HTMLInputElement = hostElement.querySelector("#postContent");
     const imageInput: HTMLInputElement = hostElement.querySelector("#imageInput");
     fixture.detectChanges();
 

@@ -10,3 +10,15 @@
 #responseDiv {
     text-align: center;
 }
+
+.extraCol {
+    width: 10%;
+}
+
+textarea {
+    resize: none;
+}
+
+#noMsgs {
+    text-align: center;
+}

@@ -4,7 +4,7 @@ export interface SubComment {
     subCommentId: Number,
     createdAt: Date,
     updatedAt: Date,
-    subCommentContent: String,
+    subCommentContent?: String,
     commenter: Partial<User>,
     commentId: Number
 }

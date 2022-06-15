@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { CommentComponent } from './comment.component';
 import { RouterTestingModule } from '@angular/router/testing'
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('CommentComponent', () => {
   let component: CommentComponent;
@@ -14,7 +15,8 @@ describe('CommentComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterTestingModule, FormsModule],
-      declarations: [ CommentComponent ]
+      declarations: [ CommentComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   });

@@ -49,6 +49,7 @@ export class SubCommentComponent implements OnInit {
         msg.style = 'color: green;';
         msg.innerHTML = 'Sub-Comment posted.';
         this.clearMsg();
+        this.changeCharsRemain();
       } else {
         msg.style = 'color: red;';
         msg.innerHTML = 'Failed to send message.';

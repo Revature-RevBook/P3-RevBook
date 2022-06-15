@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { AccountComponent } from './account.component';
 import { RouterTestingModule } from '@angular/router/testing'
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('AccountComponent', () => {
   let component: AccountComponent;
@@ -13,11 +14,17 @@ describe('AccountComponent', () => {
 
 
   beforeEach(async () => {
+    //defining session info
+    sessionStorage.setItem('username', 'test');
+    sessionStorage.setItem('email', 'testemail');
+    sessionStorage.setItem('profileImgLink', 'testurl');
+    
     await TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterTestingModule, FormsModule],
-      declarations: [ AccountComponent ]
+      declarations: [AccountComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
 
@@ -26,11 +33,8 @@ describe('AccountComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
 
-    
-  //defining session info
-  sessionStorage.setItem('username', 'test');
-  sessionStorage.setItem('email', 'testemail');
-  sessionStorage.setItem('profileImgLink', 'testurl');
+
+
   }));
 
   it('should create', () => {
@@ -83,8 +87,8 @@ describe('AccountComponent', () => {
     const el = fixture.debugElement.query(By.css('form'));
     const fnc = spyOn(component, 'updateAccount');
 
-    el.triggerEventHandler('ngSubmit',null);
-    
+    el.triggerEventHandler('ngSubmit', null);
+
     expect(fnc).toHaveBeenCalled();
   }));
 
@@ -98,7 +102,7 @@ describe('AccountComponent', () => {
 
     usernameInput.value = "test";
     passwordInput.value = "passTest";
-    emailInput.value ='test@test.com';
+    emailInput.value = 'test@test.com';
 
     usernameInput.dispatchEvent(new Event('input'));
     passwordInput.dispatchEvent(new Event('input'));
@@ -113,8 +117,8 @@ describe('AccountComponent', () => {
     const el = fixture.debugElement.query(By.css('#deleteAccount'));
     const fnc = spyOn(component, 'deleteAccount');
 
-    el.triggerEventHandler('ngSubmit',null);
-    
+    el.triggerEventHandler('ngSubmit', null);
+
     expect(fnc).toHaveBeenCalled();
   }));
 
@@ -122,7 +126,7 @@ describe('AccountComponent', () => {
     const hostElement = fixture.nativeElement;
 
     const deleteAccount: HTMLInputElement = hostElement.querySelector("#deleteMyAccount");
-  
+
     fixture.detectChanges();
 
     deleteAccount.value = "test";
@@ -130,6 +134,6 @@ describe('AccountComponent', () => {
     deleteAccount.dispatchEvent(new Event('input'));
 
     expect(component.modelDeleteAccount.deleteText).toBe('test');
-    
+
   }));
 });

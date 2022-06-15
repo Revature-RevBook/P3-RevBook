@@ -1,30 +1,49 @@
 <div class="card">
     <table class="table">
         <thead>
-            <th scope="col">Id</th>
+            <th scope="col">#</th>
             <th scope="col">Sender</th>
             <th scope="col">Message</th>
-            <th scope="col"></th>
+            <th class = "extraCol" scope="col"></th>
+            <th class = "extraCol" scope="col"></th>
+            <th class = "extraCol" scope="col"></th>
         </thead>
         <tbody>
-            <tr scope="row" class = "message" *ngFor="let message of messages">
-                <td>{{message.messageId}}</td>
-                <td>{{message.sender.userId}}</td>
+            <tr *ngIf="messages.length < 1">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>            
+            <tr scope="row" class = "message" *ngFor="let message of messages; let i = index;">
+                <td>{{i + 1}}</td>
+                <td>{{message.sender.username}}</td>
                 <td>{{message.messageContent}}</td>
-                <td><button class="btn btn-warning" style="background-color: #F26925; color: white;" (click)="selectMessage(message.messageId, message.sender)">Respond</button></td>
+                <td><button class="btn btn-warning" style="background-color: #F26925; color: white;" (click)="selectMessage(i, message.messageId, message.sender)">Respond</button></td>
+                <td><button id="deleteBtn{{i}}" class="btn btn-warning" style="background-color: #F26925; color: white;" (click)="deleteMessage(i, message.messageId)">Delete</button></td>
+                <td><span id="deleteMsg{{i}}">&Tab;</span></td>
             </tr>
         </tbody>
     </table>
+    <p *ngIf="messages.length < 1" id="noMsgs">No Messages</p>
 </div>
 <section id="respond_section"></section>
 <div id="respondToMsg">
     <hr>
     <div id="responseDiv" class="card">
-        <h5 id="responseHeader">Respond to Message </h5>
+        <h5 id="responseHeader">Respond to Message</h5>
+        <p id="answerMsg"></p>
         <form class="answer" (ngSubmit)="sendMessage()" #f="ngForm" ngNativeValidate>
-            <textarea id="response" class="answerbox" name="answerbox" [(ngModel)]="message.messageContent" cols="50" rows="2"></textarea>
+            <textarea type="text" class="form-control" name="answerbox" id="response" rows="3" [(ngModel)]="message.messageContent" #postContent="ngModel" placeholder="Enter message" (ngModelChange)="changeCharsRemain()" maxlength="255" required></textarea>
+            <p id="charsRemain">Characters Remaining: {{charsRemain}}</p>
             <br>
             <button class="btn btn-warning" style="background-color: #F26925; color: white;">Send</button>
+        </form>
+        <br>
+        <form action="">
+            <button id="closeBtn" class="btn btn-warning" style="background-color: #F26925; color: white;" (click)="closeMessage()">Close</button>
         </form>
     </div>
 </div>
