@@ -10,7 +10,7 @@ import { PostService } from 'src/services/post.service';
 })
 export class PostFeedTableComponent implements OnInit {
   
-  posts!:Post[];
+  posts:Post[] = [];
 
   constructor(private postService:PostService,
     private route:ActivatedRoute,

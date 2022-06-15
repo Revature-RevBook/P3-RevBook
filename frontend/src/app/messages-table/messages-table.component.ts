@@ -21,7 +21,7 @@ export class MessagesTableComponent implements OnInit {
     recipient: {}
   }
 
-  messages!: Message[];
+  messages: Message[] = [];
 
   constructor(private messageService: MessageService,
     private route: ActivatedRoute,

@@ -10,7 +10,7 @@ import { CommentService } from 'src/services/comment.service';
 export class CommentTableComponent implements OnInit {
   @Input() postId:Number = 0;
 
-  comments!:Comment[];
+  comments:Comment[] = [];
 
   constructor(private commentService:CommentService) { }
 
