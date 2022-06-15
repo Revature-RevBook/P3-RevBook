@@ -360,22 +360,16 @@ public class RevBookApplicationTest {
 
     @Test
     void testGetAllUsers() {
-        List<User> listUsers = new ArrayList<>();
-        Date date = new Date();
-        Timestamp ts = new Timestamp(date.getTime());
-
-
         User user = new User("test_name", "pass123", null, null, "test@gmail.com", "fjiefeirf.com");
         userService.addUser(user);
-        listUsers.add(user);
         User user1 = new User("test_name1", "pass1234", null, null, "test1@gmail.com", "dsfauua.net");
         userService.addUser(user1);
-        listUsers.add(user1);
         User user2 = new User("test_nam2e", "pass1235", null, null, "test2@gmail.com", "fjeiojfe.com");
         userService.addUser(user2);
-        listUsers.add(user2);
 
-        Assertions.assertNotEquals(listUsers, userService.getAllUsers());
+        List<User> Users = userService.getAllUsers();
+
+        Assertions.assertTrue(!Users.isEmpty());
     }
 
 
@@ -414,56 +408,42 @@ public class RevBookApplicationTest {
     @Test
     @Order(22)
     void testGetAllVotePost() {
-        List<VotePost> allVotes = new ArrayList<>();
-        Date date = new Date();
-        Timestamp ts = new Timestamp(date.getTime());
-
-        VotePost votePost = new VotePost(ts, ts, 25, 1L, 1L);
+        VotePost votePost = new VotePost(null, null, 25, 1L, 1L);
         votePostService.addVotePost(votePost);
-        allVotes.add(votePost);
-        VotePost votePost1 = new VotePost(ts, ts, 25, 1L, 1L);
+        VotePost votePost1 = new VotePost(null, null, 25, 1L, 1L);
         votePostService.addVotePost(votePost1);
-        allVotes.add(votePost1);
 
-        Assertions.assertNotEquals(allVotes, votePostService.getAllVotePosts());
+        List<VotePost> votePosts = votePostService.getAllVotePosts();
+
+        Assertions.assertTrue(!votePosts.isEmpty());
 
 
     }
 
     @Test
     void testGetVotePostById() {
-        List<VotePost> allVotes = new ArrayList<>();
-        Date date = new Date();
-        Timestamp ts = new Timestamp(date.getTime());
-
-        VotePost votePost = new VotePost(1L, ts, ts, 25, 1L, 1L);
+        VotePost votePost = new VotePost( null, null, 25, 1L, 1L);
         votePostService.addVotePost(votePost);
-        allVotes.add(votePost);
-        VotePost votePost1 = new VotePost(2L, ts, ts, 25, 1L, 1L);
-        votePostService.addVotePost(votePost1);
-        allVotes.add(votePost1);
+        VotePost votePost1 = new VotePost( null, null, 25, 1L, 1L);
+        votePost1 = votePostService.addVotePost(votePost1);
 
-        VotePost result = votePostService.getVotePostById(1L);
+        VotePost result = votePostService.getVotePostById(2L);
 
-        Assertions.assertNotEquals(votePost, result);
+        Assertions.assertEquals(2L, votePost1.getVoteId());
 
 
     }
 
     @Test
     void testGetAllVotePostByPostId() {
-        List<VotePost> allVotes = new ArrayList<>();
-        Date date = new Date();
-        Timestamp ts = new Timestamp(date.getTime());
-
-        VotePost votePost = new VotePost(1L, ts, ts, 25, 1L, 1L);
+        VotePost votePost = new VotePost(1L, null, null, 25, 1L, 1L);
         votePostService.addVotePost(votePost);
-        allVotes.add(votePost);
-        VotePost votePost1 = new VotePost(2L, ts, ts, 25, 1L, 1L);
+        VotePost votePost1 = new VotePost(2L, null, null, 25, 1L, 1L);
         votePostService.addVotePost(votePost1);
-        allVotes.add(votePost1);
 
-        Assertions.assertNotEquals(allVotes, votePostService.getAllVotePostByPostId(1L));
+        List<VotePost> votePosts = votePostService.getAllVotePostByPostId(1L);
+
+        Assertions.assertTrue(!votePosts.isEmpty());
     }
 
     /*==================================================================================================================
