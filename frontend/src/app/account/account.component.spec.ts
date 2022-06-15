@@ -72,7 +72,7 @@ describe('AccountComponent', () => {
   it('should have an input element password', () => {
     const el = fixture.debugElement.query(By.css('#inputPassword'));
     expect(el).toBeTruthy();
-    expect(el.nativeElement.getAttribute('type')).toEqual('text');
+    expect(el.nativeElement.getAttribute('type')).toEqual('password');
     expect(el.nativeElement.getAttribute('name')).toEqual('password');
   });
 
