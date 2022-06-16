@@ -12,7 +12,7 @@ export class RequestInterceptor implements HttpInterceptor {
 
   constructor() {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Get token from sessionStorage if user has logged in:
     let token = sessionStorage.getItem('token');
 

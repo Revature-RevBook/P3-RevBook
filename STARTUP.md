@@ -68,6 +68,23 @@ s3_secretKey=
 s3_region=
 ```
 
+### `database foreign keys`
+
+- This step is optional, but you can use in the Command-Line or DBeaver's Script file to update the database to ensure the tables have the proper foreign keys:
+```markdown
+alter table comment add foreign key (post_id) references post(post_id) on delete cascade on update cascade;
+
+alter table vote_comment add foreign key (comment_id) references comment(comment_id) on delete cascade on update cascade;
+alter table vote_comment add foreign key (voter_id) references users(user_id) on delete cascade on update cascade;
+
+alter table vote_post add foreign key (post_id) references post(post_id) on delete cascade on update cascade;
+alter table vote_post add foreign key (voter_id) references users(user_id) on delete cascade on update cascade;
+
+alter table post_image add foreign key (post_id) references post(post_id) on delete cascade on update cascade;
+
+alter table sub_comment add foreign key (comment_id) references comment(comment_id) on delete cascade on update cascade;
+```
+
 ## Using `AWS CodePipeLine` to build and deploy the project
 
 <img src="images/integrationflow.png" height=250px>

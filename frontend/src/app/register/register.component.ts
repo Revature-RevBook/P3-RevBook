@@ -62,7 +62,6 @@ export class RegisterComponent implements OnInit {
         this.isUserUnique = response.isUnique;
         if (this.isUserUnique) {
           this.registrationService.addUser(this.user).subscribe(response => {
-            console.log(response)
             this.hasSuccessfullyRegistered = true;
           })
         }

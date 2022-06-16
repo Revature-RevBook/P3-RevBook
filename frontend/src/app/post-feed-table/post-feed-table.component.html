@@ -1,7 +1,7 @@
 <div>
     <table class="table">
         <tbody>
-            <tr scope="row" id="post" class="card border-info mb-5" *ngFor="let post of posts">
+            <tr scope="row" id="post" class="card border-info mb-5" *ngFor="let post of posts; let i = index;">
                 <td>
                     <h5>{{post.postTitle}}</h5>
                     <br />
@@ -18,7 +18,7 @@
                     </span>
                     <div *ngIf="post.postImgId != null">
                         <br/><br/>
-                        <img src="http://p3revbook-env.eba-9n8rwwpy.us-east-1.elasticbeanstalk.com/post-images/{{post.postId}}/image/download" alt="Post Image">
+                        <img src="http://localhost:8080/post-images/post/{{post.postId}}/image/download" alt="Post #{{post.postId}} Image">
                     </div>
                     <br /><br />
                     <div>

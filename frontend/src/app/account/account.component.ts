@@ -92,7 +92,6 @@ export class AccountComponent implements OnInit {
 
       this.userService.deleteUser(this.user.userId).subscribe(res => {
         if (res) {
-          console.log(res);
           this.router.navigate(['/logout']);
         }else {
           alert("No Response. Delete failed.");

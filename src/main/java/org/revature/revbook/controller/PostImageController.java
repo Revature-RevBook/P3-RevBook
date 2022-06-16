@@ -33,7 +33,7 @@ public class PostImageController {
 //        return postImageService.getPostImageById(imageId);
 //    }
 
-    @RequestMapping(value = "/{postId}/image/download", method = RequestMethod.GET)
+    @RequestMapping(value = "post/{postId}/image/download", method = RequestMethod.GET)
     public byte[] downloadImage(@PathVariable("postId") Long postId) {
         return postImageService.downloadImage(postId);
     }

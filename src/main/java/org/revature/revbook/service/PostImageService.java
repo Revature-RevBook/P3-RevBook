@@ -69,7 +69,6 @@ public class PostImageService {
         // Call PostImageRepository to find the new image to obtain its ID.
         //  Then, update the post with the postImage's imageId and call the service to send it to the database:
         PostImage postImage = postImageRepository.findByPostId(postId);
-        System.out.println(postImage.getPostId());
         post.setPostImgId(postImage.getImageId());
         postService.updatePost(post, postId);
         return postImage;

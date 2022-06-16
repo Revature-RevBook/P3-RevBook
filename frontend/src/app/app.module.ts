@@ -42,7 +42,7 @@ import { SubCommentTableComponent } from './sub-comment-table/sub-comment-table.
     MessagesComponent,
     MessagesTableComponent,
     SubCommentComponent,
-    SubCommentTableComponent
+    SubCommentTableComponent,
   ],
   imports: [
     BrowserModule,
